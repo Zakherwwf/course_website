@@ -1,0 +1,50 @@
+---
+// src/components/GdelSystem.astro
+---
+<div class="system-card">
+    <div class="icon">G</div>
+    <div class="content">
+        <h4>The Gdel System</h4>
+        <p>
+            An ancient pastoral practice of collective rangeland resting. Communities decide on exclusion periods to allow pastures to recover, adapting seasonal grazing patterns to climatic variability.
+        </p>
+    </div>
+</div>
+
+<style lang="scss">
+    .system-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        background-color: var(--color-bg-alt);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border: 1px solid var(--color-border);
+    }
+    .icon {
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--color-primary);
+        color: white;
+        display: grid;
+        place-content: center;
+        font-family: var(--font-serif);
+        font-size: 1.75rem;
+        font-weight: 600;
+    }
+    h4 {
+        font-family: var(--font-sans);
+        font-size: 1.25rem;
+        margin: 0 0 0.5rem 0;
+        color: var(--color-primary);
+    }
+    p {
+        font-family: var(--font-sans);
+        font-size: 0.95rem;
+        margin: 0;
+        line-height: 1.6;
+    }
+</style>

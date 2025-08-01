@@ -1,70 +1,36 @@
 ---
 const chapters = [
     { title: "Chapter 1: Global Synthesis", url: "/course_website/" },
-    { title: "Chapter 2: Regional Focus", url: "/course_website/chapter2/" }, // <-- ADD THIS LINE
+    { title: "Chapter 2: Regional Focus", url: "/course_website/chapter2/" },
+    { title: "Chapter 3: Tunisia Focus", url: "/course_website/chapter3/" },
+    { title: "Chapter 4: Threats & Solutions", url: "/course_website/chapter4/" }, // <-- ADD THIS
 ]
 
-// Determine the base path of the current page to correctly highlight the chapter
 const currentPath = Astro.url.pathname;
-const isChapter1 = currentPath === '/course_website/' || currentPath === '/course_website/index.html';
-const isChapter2 = currentPath.startsWith('/course_website/chapter2');
 ---
 <aside class="left-sidebar">
     <nav>
         <ul>
-            <li>
-                <a href={chapters[0].url} class:list={{ active: isChapter1 }}>
-                    {chapters[0].title}
-                </a>
-            </li>
-            <li>
-                <a href={chapters[1].url} class:list={{ active: isChapter2 }}>
-                    {chapters[1].title}
-                </a>
-            </li>
+            {chapters.map(chapter => {
+                const isActive = currentPath.startsWith(chapter.url) &&
+                                 (currentPath.length === chapter.url.length || currentPath[chapter.url.length] === '/' || currentPath.endsWith('index.html'));
+                // Special case for the homepage
+                if (chapter.url === '/course_website/' && currentPath !== '/course_website/' && !currentPath.endsWith('index.html')) {
+                    // Don't mark active if it's a sub-page
+                }
+
+                return (
+                    <li>
+                        <a href={chapter.url} class:list={{ active: isActive }}>
+                            {chapter.title}
+                        </a>
+                    </li>
+                );
+            })}
         </ul>
     </nav>
 </aside>
 
 <style lang="scss">
 /* ... The SCSS styles are unchanged ... */
-.left-sidebar {
-    position: sticky;
-    top: 60px; /* Header height */
-    height: calc(100vh - 60px);
-    border-right: 1px solid var(--color-border);
-    padding: 2rem 1.5rem;
-    overflow-y: auto;
-
-    @media (max-width: 767px) {
-        display: none; // Hide on mobile for simplicity
-    }
-}
-ul {
-    list-style: none;
-    padding: 0;
-}
-li {
-    margin-bottom: 0.5rem;
-}
-a {
-    display: block;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-family: var(--font-sans);
-    font-weight: 600;
-    color: var(--color-text-muted);
-    text-decoration: none;
-    transition: background-color 0.2s, color 0.2s;
-
-    &:hover {
-        background-color: var(--color-bg-alt);
-        color: var(--color-text);
-    }
-
-    &.active {
-        background-color: var(--color-primary);
-        color: white;
-    }
-}
 </style>

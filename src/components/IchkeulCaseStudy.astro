@@ -1,0 +1,60 @@
+---
+// src/components/IchkeulCaseStudy.astro
+---
+<div class="case-study-card">
+    <div class="header success">
+        <span class="type">Case Study: Successful Restoration</span>
+        <h4>Ichkeul National Park</h4>
+    </div>
+    <div class="content">
+        <p>Once listed as World Heritage in Danger, Ichkeul is a global success story. Coordinated water management reversed ecological collapse.</p>
+        <ul>
+            <li><strong>Salinity:</strong> Reduced from crisis levels of 73 g/L to a sustainable 10-30 g/L range.</li>
+            <li><strong>Bird Populations:</strong> Recovered from a low of 50,000 to 90,000-300,000 in optimal years.</li>
+            <li><strong>Key Intervention:</strong> Coordinated dam releases ensuring 80-120 million m³ of annual freshwater inflow.</li>
+        </ul>
+    </div>
+</div>
+
+<style lang="scss">
+    .case-study-card {
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        margin: 2rem 0;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .header {
+        padding: 1rem 1.5rem;
+        color: white;
+        &.success { background-color: var(--color-primary); }
+        &.challenge { background-color: #b91c1c; } /* A deep red for challenges */
+    }
+    .type {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        opacity: 0.8;
+    }
+    h4 {
+        font-family: var(--font-sans);
+        font-size: 1.25rem;
+        margin: 0.25rem 0 0 0;
+        color: white;
+    }
+    .content {
+        padding: 1.5rem;
+        background-color: var(--color-bg);
+    }
+    ul {
+        font-family: var(--font-sans);
+        font-size: 0.95rem;
+        padding-left: 1.25rem;
+        margin-top: 1rem;
+    }
+    li {
+        margin-bottom: 0.5rem;
+    }
+</style>
