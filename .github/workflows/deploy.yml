@@ -20,6 +20,11 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+
+      # THIS IS THE NEW DEBUGGING STEP
+      - name: List files in the repository
+        run: ls -R
+
       - name: Install, build, and upload your site
         uses: withastro/action@v2
         # No need to specify path, node-version, or package-manager
