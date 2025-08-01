@@ -1,24 +1,33 @@
 ---
 const chapters = [
-    { title: "Chapter 1: Global Synthesis", url: "/" },
-    // { title: "Chapter 2: Regional Focus", url: "/chapter2" }, // Add this when you create Chapter 2
+    { title: "Chapter 1: Global Synthesis", url: "/course_website/" },
+    { title: "Chapter 2: Regional Focus", url: "/course_website/chapter2/" }, // <-- ADD THIS LINE
 ]
+
+// Determine the base path of the current page to correctly highlight the chapter
+const currentPath = Astro.url.pathname;
+const isChapter1 = currentPath === '/course_website/' || currentPath === '/course_website/index.html';
+const isChapter2 = currentPath.startsWith('/course_website/chapter2');
 ---
 <aside class="left-sidebar">
     <nav>
         <ul>
-            {chapters.map(chapter => (
-                <li>
-                    <a href={chapter.url} class:list={{ active: Astro.url.pathname === chapter.url }}>
-                        {chapter.title}
-                    </a>
-                </li>
-            ))}
+            <li>
+                <a href={chapters[0].url} class:list={{ active: isChapter1 }}>
+                    {chapters[0].title}
+                </a>
+            </li>
+            <li>
+                <a href={chapters[1].url} class:list={{ active: isChapter2 }}>
+                    {chapters[1].title}
+                </a>
+            </li>
         </ul>
     </nav>
 </aside>
 
 <style lang="scss">
+/* ... The SCSS styles are unchanged ... */
 .left-sidebar {
     position: sticky;
     top: 60px; /* Header height */
