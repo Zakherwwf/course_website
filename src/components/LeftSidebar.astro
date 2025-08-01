@@ -1,0 +1,61 @@
+---
+const chapters = [
+    { title: "Chapter 1: Global Synthesis", url: "/" },
+    // { title: "Chapter 2: Regional Focus", url: "/chapter2" }, // Add this when you create Chapter 2
+]
+---
+<aside class="left-sidebar">
+    <nav>
+        <ul>
+            {chapters.map(chapter => (
+                <li>
+                    <a href={chapter.url} class:list={{ active: Astro.url.pathname === chapter.url }}>
+                        {chapter.title}
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </nav>
+</aside>
+
+<style lang="scss">
+.left-sidebar {
+    position: sticky;
+    top: 60px; /* Header height */
+    height: calc(100vh - 60px);
+    border-right: 1px solid var(--color-border);
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+
+    @media (max-width: 767px) {
+        display: none; // Hide on mobile for simplicity
+    }
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    margin-bottom: 0.5rem;
+}
+a {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+
+    &:hover {
+        background-color: var(--color-bg-alt);
+        color: var(--color-text);
+    }
+
+    &.active {
+        background-color: var(--color-primary);
+        color: white;
+    }
+}
+</style>
