@@ -1,0 +1,92 @@
+---
+layout: '@/layouts/MainLayout.astro'
+title: "Chapter 5: Threats & Conservation Challenges"
+headings:
+  - depth: 2
+    slug: "threat-overview"
+    text: "Threat Overview: A Convergence of Pressures"
+  - depth: 2
+    slug: "habitat-loss-and-fragmentation"
+    text: "Habitat Loss & Fragmentation"
+  - depth: 2
+    slug: "water-crisis"
+    text: "Water Crisis: The Limiting Resource"
+  - depth: 2
+    slug: "climate-change-the-threat-multiplier"
+    text: "Climate Change: The Threat Multiplier"
+  - depth: 2
+    slug: "pollution-the-invisible-threat"
+    text: "Pollution: The Invisible Threat"
+  - depth: 2
+    slug: "cumulative-impacts-and-synergies"
+    text: "Cumulative Impacts & Synergies"
+---
+import LearningObjectives from '@/components/LearningObjectives.astro';
+import ThreatsGrid from '@/components/ThreatsGrid.astro';
+import KeyConceptBox from '@/components/KeyConceptBox.astro';
+import Accordion from '@/components/Accordion.astro';
+import OwidChart from '@/components/OwidChart.astro'; // <-- ADD THIS IMPORT
+
+# Chapter 5: Threats & Conservation Challenges
+
+<LearningObjectives>
+<ol>
+<li>Quantify major threats to Tunisia's ecosystems using empirical data</li>
+<li>Analyze threat interactions and cumulative impacts</li>
+<li>Evaluate current conservation effectiveness</li>
+<li>Predict future scenarios under climate change</li>
+<li>Design integrated threat mitigation strategies</li>
+</ol>
+</LearningObjectives>
+
+## 5.1 Threat Overview: A Convergence of Pressures
+Tunisia's biodiversity crisis results from numerous interconnected pressures that amplify each other's impacts, creating synergistic effects where the combined damage is greater than the sum of its parts. This convergence of population growth, economic development, and climate variability has created unprecedented environmental pressures.
+
+### Threat Magnitude and Trends
+<ThreatsGrid />
+
+### Threat Classification Framework
+Threats can be categorized into direct causes and indirect drivers.
+- **Direct Threats:** Immediate activities like habitat loss, overexploitation, pollution, invasive species, and climate change impacts.
+- **Indirect Drivers:** Underlying social and economic forces such as population growth, economic policies, governance, and cultural changes.
+
+## 5.2 Habitat Loss and Fragmentation: The Primary Threat
+Habitat loss is the most severe threat to Tunisia's biodiversity. Post-2011 revolution, forest loss nearly tripled due to weak governance and increased illegal activities. This has led to highly fragmented landscapes.
+
+<OwidChart
+    title="Net change in forest area across the world"
+    src="https://ourworldindata.org/grapher/annual-change-forest-area?tab=map"
+/>
+
+- **Mean forest patch size** has decreased from 120 ha to 45 ha.
+- **40% of remaining forest** is now considered "edge habitat," which is less suitable for many specialist species.
+- **Wetland destruction is catastrophic**, with the Medjerda Basin losing 84% of its area, increasing flooding frequency by 300%.
+
+## 5.3 Water Crisis: The Limiting Resource
+Tunisia is living beyond its hydrological means, using **115% of its renewable water resources** annually by mining non-renewable groundwater.
+- **Agriculture consumes 80%** of the total water supply.
+- **Ecosystems receive less than 2%** of the allocated water, far below what is needed to maintain their health.
+- In the south, groundwater is being extracted at **200% of its sustainable yield**, causing wells to dry up and threatening ancient oasis ecosystems.
+
+## 5.4 Climate Change: The Threat Multiplier
+Climate change amplifies all other environmental pressures in Tunisia. The country is already warming faster than the global average and has experienced a 5% decrease in annual precipitation.
+- **Future Projections:** By 2050, temperatures could increase by 1.6-2.7°C, and precipitation could decline by another 10-30%.
+- **Ecosystem Impacts:** This will lead to increased cork oak mortality, shortened wetland hydroperiods, and a northward shift of marine fish stocks.
+- **Refugia:** North-facing mountain slopes and deep gorges like those at **Djebel Zaghouan** are becoming critical climate refugia, serving as cooler, moister havens for vulnerable species.
+
+<KeyConceptBox title="Case Study: Djebel Zaghouan Climate Refuge">
+<p>
+This mountain, with an elevation range of 200 to 1,295 meters, creates a temperature gradient of ~6°C. It hosts over 400 plant species (30% of Tunisia's flora) and 8 endemic species. Conservation actions here, such as establishing wildlife corridors and assisted migration trials, are pioneering climate adaptation strategies for the region.
+</p>
+</KeyConceptBox>
+
+## 5.5 Pollution: The Invisible Threat
+Pollution acts as a slow poison, weakening ecosystems from within.
+- **Agricultural Pollution:** Annual use of 3,000 tons of pesticides and 200,000 tons of fertilizers leads to widespread contamination of water bodies and pollinator decline.
+- **Marine Pollution:** 20,000 tons of plastic waste enter the Mediterranean from Tunisia annually. Industrial discharge from the phosphate industry has created severe pollution hotspots in the Gulf of Gabès.
+- **Noise Pollution:** Increasing traffic and shipping noise disrupts bird migration and marine mammal communication.
+
+## 5.6 Cumulative Impacts and Synergies
+Threats rarely act in isolation; they interact to create cascading failures.
+- **Forests:** Drought stress weakens trees, making them vulnerable to pest outbreaks. The resulting dead wood increases fire risk, while grazing prevents regeneration.
+- **Coastal Lagoons:** These ecosystems are "squeezed" by upstream dams reducing freshwater, agricultural runoff increasing nutrients, urban development encroaching on their borders, and sea-level rise pushing saltwater inland.

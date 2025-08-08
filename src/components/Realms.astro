@@ -1,0 +1,52 @@
+---
+// src/components/Realms.astro
+---
+<div class="realms-container">
+  <div>
+    <dt>1. Terrestrial Realm</dt>
+    <dd>Land-based ecosystems where atmospheric processes dominate represent the most familiar realm to humans. Here, plants must obtain water from soil and atmosphere, and all organisms must cope with gravity's full effects and temperature fluctuations that can span dozens of degrees within a single day. The terrestrial realm encompasses everything from tropical rainforests with their towering canopies and incredible biodiversity to arctic tundra where plants grow only centimeters tall and growing seasons last mere months. What unites these diverse systems is their dependence on atmospheric gases for photosynthesis and respiration, and their need to manage water as a potentially limiting resource..</dd>
+  </div>
+  <div>
+    <dt>2. Freshwater Realm</dt>
+    <dd>Continental water bodies and associated riparian zones create unique conditions where water availability is abundant, but other factors like oxygen levels, current flow, and seasonal variations become critical. Freshwater systems connect terrestrial and marine realms, serving as corridors for nutrients, sediments, and organisms. Rivers exemplify the dynamic nature of freshwater ecosystems. A mountain stream tumbling over rocks creates highly oxygenated conditions that support specialized insect larvae, while a slow-moving lowland river develops entirely different communities adapted to warmer, murkier conditions. These differences in physical conditions drive distinct ecosystem functions and services.</dd>
+  </div>
+  <div>
+    <dt>3. Marine Realm</dt>
+    <dd>Ocean and coastal ecosystems influenced by seawater chemistry represent Earth's largest biome by volume. The unique properties of seawater – its salinity, density, and chemical composition – create conditions radically different from terrestrial or freshwater systems. Marine ecosystems range from the sunlit surface waters where phytoplankton conduct photosynthesis to the perpetually dark deep ocean where specialized communities depend entirely on organic matter falling from above or energy from hydrothermal vents. The three-dimensional nature of marine environments creates opportunities for complex vertical migrations and layered communities that have no terrestrial equivalent.</dd>
+  </div>
+  <div>
+    <dt>4. Subterranean Realm</dt>
+    <dd>Underground ecosystems in caves, aquifers, and deep soils represent perhaps the least understood realm. Here, sunlight never penetrates, and organisms must either bring energy from the surface or derive it from chemical processes. These systems challenge our surface-based assumptions about life's requirements. Cave ecosystems often harbor highly specialized species that have evolved unique adaptations to perpetual darkness, including enhanced sensory systems and modified metabolism. Groundwater systems support vast microbial communities that play crucial roles in nutrient cycling and water purification, even though we rarely see direct evidence of their activities.</dd>
+  </div>
+  <div>
+    <dt>5. Atmospheric Realm</dt>
+    <dd>Aerial ecosystems including airborne microbial communities represent the newest addition to ecosystem classification. While we once thought of the atmosphere simply as the medium through which other organisms moved, we now recognize that significant biological processes occur in the air itself. Atmospheric microorganisms influence cloud formation, participate in long-distance nutrient transport, and contribute to biogeochemical cycles on a global scale. Understanding these aerial communities becomes increasingly important as we recognize their roles in climate regulation and disease transmission.</dd>
+  </div>
+</div>
+
+<style lang="scss">
+    .realms-container {
+        display: grid;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+    .realms-container > div {
+        background-color: var(--color-bg-alt);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid var(--color-border);
+    }
+    .realms-container dt {
+        font-family: var(--font-sans);
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--color-primary);
+        margin-bottom: 0.75rem;
+    }
+    .realms-container dd {
+        margin-left: 0;
+        font-family: var(--font-sans);
+        font-size: 0.95rem;
+        color: var(--color-text-muted);
+    }
+</style>

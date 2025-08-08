@@ -1,0 +1,85 @@
+---
+// src/components/BioclimaticZones.astro
+const zones = [
+  { name: "Humid", rainfall: ">800mm", coverage: "3%", color: "#22c55e" }, // Green
+  { name: "Sub-humid", rainfall: "600-800mm", coverage: "4%", color: "#84cc16" }, // Lime
+  { name: "Semi-arid", rainfall: "300-600mm", coverage: "20%", color: "#facc15" }, // Yellow
+  { name: "Arid", rainfall: "100-300mm", coverage: "32%", color: "#fb923c" }, // Orange
+  { name: "Saharan", rainfall: "<100mm", coverage: "41%", color: "#f97316" } // Deep Orange
+];
+---
+<div class="zones-container">
+  <h4>Tunisia's Bioclimatic Zones</h4>
+  <div class="zones-grid">
+    {zones.map(zone => (
+      <div class="zone-card">
+        <div class="indicator" style={`background-color: ${zone.color}`}></div>
+        <div class="details">
+          <span class="name">{zone.name}</span>
+          <span class="rainfall">{zone.rainfall} rainfall</span>
+          <span class="coverage">{zone.coverage} of territory</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style lang="scss">
+  .zones-container {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  h4 {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin: 0 0 1.5rem 0 !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 1px solid var(--color-border) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .zones-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    @media (min-width: 500px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media (min-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+    @media (min-width: 1024px) {
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+  .zone-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .indicator {
+    flex-shrink: 0;
+    width: 12px;
+    height: 50px;
+    border-radius: 4px;
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+  }
+  .name {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-text);
+  }
+  .rainfall, .coverage {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+</style>

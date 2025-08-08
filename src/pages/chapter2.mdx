@@ -1,0 +1,132 @@
+---
+layout: '@/layouts/MainLayout.astro'
+title: "Chapter 2: Mediterranean & North Africa"
+headings:
+  - depth: 2
+    slug: "mediterranean-climate-ecosystems"
+    text: "Mediterranean-Climate Ecosystems"
+  - depth: 2
+    slug: "mediterranean-basin"
+    text: "The Mediterranean Basin"
+  - depth: 2
+    slug: "north-african-complexity"
+    text: "North African Ecological Complexity"
+  - depth: 2
+    slug: "water-the-limiting-factor"
+    text: "Water: The Limiting Factor"
+  - depth: 2
+    slug: "human-dimensions"
+    text: "Human Dimensions & Landscape Change"
+  - depth: 2
+    slug: "climate-change-impacts"
+    text: "Amplified Climate Change Impacts"
+---
+import LearningObjectives from '@/components/LearningObjectives.astro';
+import Map from '@/components/Map.jsx';
+import Accordion from '@/components/Accordion.astro';
+import KeyConceptBox from '@/components/KeyConceptBox.astro';
+
+# Chapter 2: Mediterranean & North African Context
+
+<LearningObjectives>
+<ol>
+<li>Characterize the unique features of Mediterranean-climate ecosystems globally</li>
+<li>Analyze biodiversity patterns across Mediterranean Basin and North Africa</li>
+<li>Evaluate climate-ecosystem relationships in water-limited environments</li>
+<li>Compare traditional and modern land use impacts on regional ecosystems</li>
+<li>Design conservation strategies adapted to social-ecological contexts</li>
+</ol>
+</LearningObjectives>
+
+## 2.1 Mediterranean-Climate Ecosystems: A Global Perspective
+
+Mediterranean-climate regions occur on five continents, covering only **2% of Earth's land but supporting 20% of global plant diversity**. These regions share distinctive climatic patterns—cool, wet winters and hot, dry summers—that create unique selective pressures.
+
+### Global Distribution and Characteristics
+
+The five mediterranean-climate regions provide a natural experiment in evolutionary convergence. Each developed in isolation, yet all have evolved remarkably similar solutions to the challenges posed by their shared climate. Explore the map below to see their distribution and key statistics.
+
+<Map
+    client:only="preact"
+    center={[20, 0]}
+    zoom={2}
+    markers={[
+        {
+            position: [38, 15],
+            title: "Mediterranean Basin",
+            description: "Area: 2.3M km² | Flora: 25,000 species (52% endemic)"
+        },
+        {
+            position: [36, -120],
+            title: "California Floristic Province",
+            description: "Area: 324k km² | Flora: 4,426 species (35% endemic)"
+        },
+        {
+            position: [-33, -71],
+            title: "Central Chile",
+            description: "Area: 90k km² | Flora: 2,400 species (46% endemic)"
+        },
+        {
+            position: [-34, 20],
+            title: "Cape Floristic Province",
+            description: "Area: 90k km² | Flora: 9,000 species (69% endemic)"
+        },
+        {
+            position: [-33, 118],
+            title: "Southwestern Australia",
+            description: "Area: 310k km² | Flora: 7,380 species (49% endemic)"
+        },
+    ]}
+/>
+
+### Convergent Evolution in Mediterranean Ecosystems
+
+Despite geographic isolation, mediterranean plants worldwide exhibit remarkably similar adaptations to summer drought stress. This convergent evolution demonstrates how environmental pressures shape form and function across unrelated lineages.
+
+<Accordion>
+<details>
+<summary>Sclerophylly: The Signature Adaptation</summary>
+<div class="content">
+<p>
+Sclerophyllous (hard-leaved) vegetation dominates all mediterranean regions. Adaptations include thick, waxy cuticles to reduce water loss; small, narrow leaves to minimize surface area; and sunken stomata to protect gas exchange structures.
+</p>
+</div>
+</details>
+<details>
+<summary>Fire Adaptations</summary>
+<div class="content">
+<p>
+Regular fire cycles have selected for a suite of adaptations, including serotinous cones that release seeds only after fire, lignotubers that enable resprouting from the base, fire-stimulated germination, and thick, insulating bark.
+</p>
+</div>
+</details>
+</Accordion>
+
+## 2.2 The Mediterranean Basin: Biodiversity Hotspot Under Pressure
+
+The Mediterranean Basin stands out for its exceptional species richness, high endemism, and severe threats. As the largest mediterranean-climate region, it demonstrates how millennia of human activity can both create and destroy biodiversity. Its complex geological history, including the Messinian Salinity Crisis and Pleistocene glaciations, has created a mosaic of habitats and refugia, driving speciation.
+
+## 2.3 North African Ecological Complexity
+
+North Africa encompasses dramatic ecological gradients from Mediterranean coasts to Saharan hyperarid zones. The Sahara Desert, the world's largest hot desert, supports surprisingly resilient life, with **~500 plant species (25% endemic)** adapted to extreme heat and aridity. The Sahel, a 5,900 km transition zone to the south, is a critical migration corridor for **2 billion birds annually** and provides grazing lands for **50 million pastoralists**.
+
+<KeyConceptBox title="The Green Sahara">
+<p>
+Paleoclimatic evidence reveals a dramatically different past. During the African Humid Period (11,500-5,000 years ago), the Sahara received ~10 times its current rainfall, supporting grasslands, megalakes, and large mammal populations. This demonstrates the potential for rapid, large-scale ecosystem shifts in response to climate drivers.
+</p>
+</KeyConceptBox>
+
+## 2.4 Water: The Limiting Factor
+
+Water scarcity defines Mediterranean and North African ecosystems. The seasonal mismatch between winter rain and summer drought creates intense selective pressures. Plant adaptations are diverse, falling into three main categories:
+- **Drought Avoidance:** Using deep root systems, annual life cycles, or shedding leaves (drought deciduous).
+- **Drought Tolerance:** Employing physiological strategies like osmotic adjustment and structural features like waxy cuticles.
+- **Drought Escape:** Surviving dry periods as dormant seeds or in underground storage organs (geophytes).
+
+## 2.5 Human Dimensions: 10,000 Years of Landscape Modification
+
+The Mediterranean Basin contains the longest record of human ecosystem modification globally, creating novel "cultural landscapes". Traditional systems like terracing, extensive grazing in oak savannas (Dehesa/Montado), and crop mosaics have created **High Nature Value Farmland** that often supports higher biodiversity than purely natural areas. However, the abandonment of these practices due to rural depopulation now poses a new conservation challenge, leading to shrub encroachment and increased fire risk.
+
+## 2.6 Climate Change: Amplified Impacts in Mediterranean Regions
+
+Mediterranean regions are a climate change "hotspot," **warming 20% faster than the global average**. Projections indicate a **2.2°C temperature increase by 2040** and a **30% decrease in summer precipitation by 2080**. These changes are already causing measurable ecosystem responses, including upward migration of treelines, phenological mismatches between plants and pollinators, and a dramatic increase in the frequency of megafires.

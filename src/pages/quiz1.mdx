@@ -1,0 +1,65 @@
+---
+layout: '@/layouts/MainLayout.astro'
+title: "Chapter 1 Quiz"
+---
+import Quiz from '@/components/Quiz.jsx';
+
+# Chapter 1 Quiz: Global Ecosystem Principles
+
+Test your knowledge of the concepts covered in Chapter 1. Select the best answer for each question and review your score at the end.
+
+<Quiz client:load quizData={{
+    title: "Global Ecosystem Principles Quiz",
+    questions: [
+        {
+            question: "Which of the following is NOT one of the five realms in the IUCN Global Ecosystem Typology?",
+            options: [
+                "Terrestrial",
+                "Marine",
+                "Arboreal",
+                "Subterranean"
+            ],
+            correctAnswerIndex: 2
+        },
+        {
+            question: "A region's evolutionary and biogeographic history primarily determines its...",
+            options: [
+                "Biotic Filter",
+                "Regional Species Pool",
+                "Environmental Filter",
+                "Ecosystem Function"
+            ],
+            correctAnswerIndex: 1
+        },
+        {
+            question: "If primary productivity is 10,000 kcal/m²/year, approximately how much energy is available to tertiary consumers, assuming 10% transfer efficiency?",
+            options: [
+                "1,000 kcal/m²/year",
+                "100 kcal/m²/year",
+                "10 kcal/m²/year",
+                "1 kcal/m²/year"
+            ],
+            correctAnswerIndex: 2
+        },
+        {
+            question: "A forest providing timber is an example of which type of ecosystem service?",
+            options: [
+                "Regulating Service",
+                "Cultural Service",
+                "Supporting Service",
+                "Provisioning Service"
+            ],
+            correctAnswerIndex: 3
+        },
+        {
+            question: "Which of these planetary boundaries has been identified as already 'exceeded'?",
+            options: [
+                "Freshwater use",
+                "Ocean acidification",
+                "Biodiversity loss",
+                "Ozone depletion"
+            ],
+            correctAnswerIndex: 2
+        }
+    ]
+}} />

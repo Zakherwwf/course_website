@@ -1,0 +1,142 @@
+---
+layout: '@/layouts/MainLayout.astro'
+title: "Chapter 6: Management & Restoration"
+headings:
+  - depth: 2
+    slug: "management-paradigms"
+    text: "Management Paradigms"
+  - depth: 2
+    slug: "ecosystem-restoration"
+    text: "Ecosystem Restoration"
+  - depth: 2
+    slug: "community-based-conservation"
+    text: "Community-Based Conservation"
+  - depth: 2
+    slug: "climate-change-adaptation"
+    text: "Climate Change Adaptation"
+  - depth: 2
+    slug: "sustainable-financing"
+    text: "Sustainable Financing"
+  - depth: 2
+    slug: "policy-and-governance"
+    text: "Policy Integration & Governance"
+---
+import LearningObjectives from '@/components/LearningObjectives.astro';
+import Timeline from '@/components/Timeline.astro';
+import KeyConceptBox from '@/components/KeyConceptBox.astro';
+import Accordion from '@/components/Accordion.astro';
+import DoughnutChart from '@/components/DoughnutChart.jsx';
+
+# Chapter 6: Management & Restoration Strategies
+
+<LearningObjectives>
+<ol>
+<li>Evaluate ecosystem management approaches using empirical evidence</li>
+<li>Design restoration projects based on ecological principles</li>
+<li>Integrate traditional and modern management techniques</li>
+<li>Develop sustainable financing mechanisms</li>
+<li>Create adaptive management frameworks for uncertainty</li>
+</ol>
+</LearningObjectives>
+
+## 6.1 Management Paradigms: From Protection to Resilience
+
+Conservation thinking has evolved from static preservation to dynamic management for resilience. This shift is crucial for Tunisia's complex social-ecological systems, where thousands of years of human interaction have shaped the landscape.
+
+### Evolution of Conservation Approaches in Tunisia
+
+<Timeline>
+    <div class="timeline-item">
+        <span class="date">1881 - 1956 (Colonial Period)</span>
+        <h4 class="title">Fortress Conservation</h4>
+        <p class="description">Focused on resource extraction (timber) and exclusion of local people, creating conflicts that persist today.</p>
+    </div>
+    <div class="timeline-item">
+        <span class="date">1956 - 1990 (Post-Independence)</span>
+        <h4 class="title">State-Centered Management</h4>
+        <p class="description">Establishment of the national park system, but with a top-down, species-focused approach and an emphasis on tourism development.</p>
+    </div>
+    <div class="timeline-item">
+        <span class="date">1990 - 2010 (Sustainable Development Era)</span>
+        <h4 class="title">Integrated Conservation-Development</h4>
+        <p class="description">A shift towards recognizing community needs, though participation was often superficial. Conservation was driven by short-term, donor-funded projects.</p>
+    </div>
+    <div class="timeline-item">
+        <span class="date">2010 - Present (Resilience Approach)</span>
+        <h4 class="title">Managing for Resilience</h4>
+        <p class="description">The current paradigm emphasizes managing for change, integrating traditional knowledge, and mainstreaming climate change adaptation into all planning.</p>
+    </div>
+</Timeline>
+
+## 6.2 Ecosystem Restoration: Principles and Practice
+
+Successful restoration requires a sophisticated understanding of ecological principles. In Mediterranean ecosystems, this means prioritizing natural regeneration, using functional targets rather than trying to recreate a static past, and working at a landscape scale.
+
+**Key Restoration Techniques:**
+- **Assisted Natural Regeneration:** The most effective and cost-efficient method (70-80% success rate). Involves removing barriers like overgrazing to allow ecosystems to recover on their own.
+- **Nurse Plant Facilitation:** Uses pioneer shrubs to create favorable microclimates and soil conditions for the establishment of later-successional trees.
+- **Mixed Species Planting:** The most intensive approach, used on severely degraded sites, requiring at least 5 native species with diverse ecological functions.
+
+<KeyConceptBox title="Case Study: Aleppo Pine Restoration Success">
+    <p>The Djebel Abderrahmane project restored 1,000 hectares of degraded forest. By combining community grazing agreements, assisted natural regeneration, and targeted planting, the project increased forest cover from 10% to 65% over 18 years and reduced soil erosion by 90%.</p>
+</KeyConceptBox>
+
+## 6.3 Community-Based Conservation Approaches
+
+Sustainable conservation requires genuine community engagement and co-management. Tunisia is slowly moving from a top-down approach to more inclusive models.
+
+Successful models like the **Les Amis des Oiseaux Network**, which manages 5 Important Bird Areas through local committees, have shown a **30% increase in bird populations**. Similarly, pilot programs for **Community Forest Management** in the northwest, which share 40% of forest product revenue with communities, have led to a **50% reduction in forest fires**.
+
+## 6.4 Climate Change Adaptation Strategies
+
+Adaptation requires transforming conservation from preserving the past to managing for a future of continuous change. This involves "no-regrets" actions that provide benefits regardless of the exact climate trajectory.
+
+**Key Adaptation Strategies:**
+- **Forests:** Reducing stand density to improve water availability and assisted migration of climate-adapted genotypes.
+- **Wetlands:** Securing multiple water sources and creating inland migration corridors for coastal wetlands squeezed by sea-level rise.
+- **Agriculture:** Integrating agroforestry, conservation agriculture, and traditional water-harvesting techniques.
+
+## 6.5 Sustainable Financing for Conservation
+
+Tunisia faces a significant conservation funding gap, with current spending at **$50 million/year** against an estimated need of **$150 million/year**. This gap requires innovative financing mechanisms to ensure long-term sustainability.
+
+<Accordion>
+<details>
+<summary>Green Bonds & Carbon Markets</summary>
+<div class="content">
+<p>
+Tunisia issued its first green bond in 2022. There is also significant potential to generate revenue from carbon markets by restoring forests, seagrass meadows (blue carbon), and soils.
+</p>
+</div>
+</details>
+<details>
+<summary>Biodiversity Offsets & Debt-for-Nature Swaps</summary>
+<div class="content">
+<p>
+Pilot programs are being developed to require industries like mining to offset their environmental impact by funding conservation. A proposed debt-for-nature swap with Italy could also convert foreign debt into conservation funding.
+</p>
+</div>
+</details>
+<details>
+<summary>Payment for Ecosystem Services (PES)</summary>
+<div class="content">
+<p>
+The Zaghouan Water Fund is the first of its kind in North Africa. It uses a small tariff on Tunis's water bills to pay upstream farmers for conservation practices that improve water quality, demonstrating a successful PES model.
+</p>
+</div>
+</details>
+</Accordion>
+
+### Case Study 6.3: Integrated Financing for Ichkeul
+
+<DoughnutChart
+    client:visible
+    title="Ichkeul National Park - Revenue Sources"
+    labels={['Government', 'Tourism', 'Fishing Licenses', 'Research Fees', 'Carbon Credits', 'International']}
+    data={[40, 20, 15, 10, 10, 5]}
+    colors={['#0891b2', '#06b6d4', '#22d3ee', '#67e8f9', '#a5f3fc', '#cffafe']}
+/>
+
+## 6.6 Policy Integration and Governance
+
+Effective conservation requires policy coherence across sectors (agriculture, water, energy, tourism) to avoid contradictory incentives. Innovations like landscape-level governance (e.g., biosphere reserves, ecological corridors) and decentralization of environmental management to regional and municipal levels are critical for future success. Legal reforms, including the new Biodiversity Law, are needed to institutionalize modern conservation approaches like the ecosystem approach and co-management.

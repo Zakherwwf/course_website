@@ -1,0 +1,20 @@
+---
+// src/components/OasisSystem.astro
+---
+<div class="system-card">
+    <div class="icon">O</div>
+    <div class="content">
+        <h4>Three-Layer Oasis Agriculture</h4>
+        <p>
+            A sophisticated agroforestry system recognized as a GIAHS. Date palms form the upper canopy, fruit trees the intermediate level, and ground crops the lower level, optimizing resources and creating a favorable microclimate.
+        </p>
+    </div>
+</div>
+
+<style lang="scss" is:global>
+  /* Use the same styles as GdelSystem.astro by referencing its styles. */
+  /* This is efficient and avoids code duplication. */
+  .system-card .icon {
+    background-color: var(--color-accent); /* Give it a different color */
+  }
+</style>

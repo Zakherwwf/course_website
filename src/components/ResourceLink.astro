@@ -1,0 +1,58 @@
+---
+// src/components/ResourceLink.astro
+import 'bootstrap-icons/font/bootstrap-icons.css';
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+}
+const { href, title, description } = Astro.props;
+---
+<a href={href} target="_blank" rel="noopener noreferrer" class="resource-card">
+  <div class="icon">
+    <i class="bi bi-box-arrow-up-right"></i>
+  </div>
+  <div class="text-content">
+    <span class="title">{title}</span>
+    <span class="description">{description}</span>
+  </div>
+</a>
+
+<style lang="scss">
+  .resource-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: var(--color-primary);
+      background-color: color-mix(in srgb, var(--color-primary), transparent 90%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+  }
+  .icon {
+    color: var(--color-accent);
+    margin-top: 4px;
+  }
+  .text-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .description {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+</style>

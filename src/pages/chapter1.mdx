@@ -1,0 +1,193 @@
+---
+layout: '@/layouts/MainLayout.astro'
+title: "Chapter 1: Global Ecosystem Principles"
+headings:
+  - depth: 2
+    slug: "introduction-to-ecosystem-science"
+    text: "Introduction to Ecosystem Science"
+  - depth: 2
+    slug: "iucn-global-ecosystem-typology"
+    text: "The IUCN Global Ecosystem Typology"
+  - depth: 2
+    slug: "ecosystem-assembly-and-functioning"
+    text: "Ecosystem Assembly & Functioning"
+  - depth: 2
+    slug: "global-biodiversity-patterns"
+    text: "Global Biodiversity & Services"
+  - depth: 2
+    slug: "global-threats-to-ecosystem-integrity"
+    text: "Global Threats to Ecosystems"
+  - depth: 2
+    slug: "conservation-success-stories"
+    text: "Conservation Success Stories"
+---
+import LearningObjectives from '@/components/LearningObjectives.astro';
+import KeyConceptBox from '@/components/KeyConceptBox.astro';
+import CounterCard from '@/components/CounterCard.jsx';
+import Accordion from '@/components/Accordion.astro';
+import Realms from '@/components/Realms.astro';
+import InteractiveTypology from '@/components/InteractiveTypology.jsx';
+import VideoEmbed from '@/components/VideoEmbed.astro'; // <-- ADD THIS IMPORT
+
+# Chapter 1: Global Ecosystem Principles
+
+<LearningObjectives>
+  <ol>
+    <li>Define and classify Earth's major ecosystem types using the IUCN Global Ecosystem Typology</li>
+    <li>Explain ecosystem assembly processes and functional drivers</li>
+    <li>Analyze the economic value of ecosystem services globally</li>
+    <li>Evaluate current threats to global biodiversity using quantitative data</li>
+    <li>Compare ecosystem conservation approaches across different biomes</li>
+  </ol>
+</LearningObjectives>
+
+## 1.1 Introduction to Ecosystem Science
+
+Natural ecosystems represent the foundation of life on Earth, supporting both biodiversity and human societies through complex interactions between living organisms and their physical environment. Understanding these systems requires examining patterns and processes from local to global scales, integrating ecological theory with practical conservation applications.
+
+The study of ecosystems has evolved from descriptive natural history to quantitative science incorporating remote sensing, molecular techniques, and sophisticated modeling approaches. This evolution parallels growing recognition that ecosystem degradation threatens human wellbeing, with recent assessments showing that **$58 trillion of global economic activity depends directly on nature** (<a href="https://www.ipbes.net/" target="_blank" rel="noopener noreferrer" class="learn-more-link">IPBES, 2024</a>).
+
+<CounterCard
+  client:visible
+  endValue={58}
+  prefix="$"
+  suffix=" Trillion"
+  label="of global economic activity depends directly on nature (IPBES, 2024)."
+/>
+
+{/* --- THIS IS THE NEW VIDEO EMBED --- */}
+<VideoEmbed
+    title="TED Talk: Put a value on nature!"
+    subtitle="Economist Pavan Sukhdev explains the economic imperative of valuing our natural capital."
+>
+    <iframe src="https://embed.ted.com/talks/pavan_sukhdev_put_a_value_on_nature" width="1024" height="576" frameborder="0" scrolling="no" allowfullscreen></iframe>
+</VideoEmbed>
+
+To truly appreciate modern ecosystem science, we must understand its intellectual journey. Early naturalists like Alexander von Humboldt in the 1800s first recognized that plants and animals existed in predictable associations tied to climate and geography. However, these observations remained largely descriptive until the mid-20th century when scientists began developing quantitative approaches to understand ecosystem functioning.
+
+The concept of the ecosystem itself was coined by British ecologist Arthur Tansley in 1935, who recognized that we cannot separate living communities from their physical environment. This holistic perspective represented a revolutionary shift from studying individual species to understanding entire systems. Tansley's insight laid the groundwork for modern ecosystem ecology, which views nature as interconnected webs of energy flow and nutrient cycling.
+
+The digital revolution has transformed ecosystem science in recent decades. Satellite imagery now allows us to monitor forest cover changes across entire continents in real-time. Molecular techniques help us identify previously unknown species and understand their roles in ecosystem functioning. Computer modeling enables us to predict how ecosystems might respond to different management scenarios or climate change impacts.
+
+The staggering figure of 58 trillion dollars in economic dependence on nature deserves deeper exploration. This represents more than half of global GDP and encompasses everything from the pollination services that enable food production to the forests that regulate water cycles and prevent flooding. When we degrade ecosystems, we undermine the natural infrastructure that supports human civilization.
+
+Consider a simple example: wetlands. These ecosystems filter pollutants from water, reduce flood risks, store carbon, and provide habitat for countless species. A single hectare of wetland can store up to 30 tons of carbon and filter thousands of cubic meters of water annually. When wetlands are drained for development, communities lose these services and must invest in expensive technological alternatives like water treatment plants and flood control systems.
+
+### Key Concept: What is an Ecosystem?
+
+<KeyConceptBox title="What is an Ecosystem?">
+  <p>
+    An ecosystem encompasses all living organisms (biotic components) in a given area interacting with each other and their physical environment (abiotic components) through nutrient cycles and energy flows. These interactions create emergent properties that cannot be predicted from individual components alone.
+  </p>
+  <p>
+    Think of an ecosystem like a complex orchestra where each species plays a different instrument. Individual musicians (species) may be skilled, but the beautiful symphony (ecosystem functions) only emerges when they play together in harmony. Just as removing key instruments changes the entire musical experience, losing species from ecosystems can fundamentally alter how these systems function.
+  </p>
+  <p>
+    The concept of emergent properties is crucial here. When water molecules come together, they create properties like wetness and surface tension that individual molecules do not possess. Similarly, when species interact within ecosystems, they generate services like climate regulation, soil formation, and water purification that no single species could provide alone.
+  </p>
+</KeyConceptBox>
+
+## 1.2 The IUCN Global Ecosystem Typology Framework
+
+The International Union for Conservation of Nature (IUCN) developed the <a href="https://iucn.org/resources/conservation-tool/iucn-global-ecosystem-typology" target="_blank" rel="noopener noreferrer" class="learn-more-link">Global Ecosystem Typology 2.0</a> as the first comprehensive classification system for all Earth's ecosystems (Keith et al., 2022). This framework revolutionizes how we understand and manage ecosystems by integrating functional characteristics with traditional biogeographic approaches.
+
+Imagine trying to practice medicine without a standardized way to classify diseases, or attempting to build computers without agreed-upon specifications for components. This was essentially the challenge facing ecosystem science before the IUCN typology. Different regions used different classification systems, making it nearly impossible to compare ecosystems across countries or continents.
+
+The IUCN framework solves this problem by providing a universal language for describing ecosystems. This standardization enables scientists to identify similar ecosystems worldwide, compare their functioning, and share management strategies. For instance, Mediterranean-climate ecosystems in California, Chile, South Africa, Australia, and the Mediterranean Basin can now be systematically compared using the same classification criteria.
+
+More importantly, this framework shifts focus from simply describing what ecosystems look like to understanding how they function. Traditional biogeographic approaches might classify forests based on their dominant tree species, but the IUCN system considers factors like disturbance regimes, nutrient cycling patterns, and energy flow pathways.
+
+### Hierarchical Classification Structure
+
+**Level 1: Realms (5 categories)**
+The highest level divides Earth's biosphere into five fundamental realms based on the dominant medium supporting life:
+
+<Realms />
+
+**Level 2: Functional Biomes (25 categories)**
+Within each realm, ecosystems group into biomes sharing similar ecological functions and environmental constraints.
+
+**Level 3: Ecosystem Functional Groups (110+ categories)**
+The finest level identifies specific ecosystem types sharing assembly processes and ecological functions.
+
+<InteractiveTypology client:load />
+
+## 1.3 Ecosystem Assembly and Functioning
+
+Understanding how ecosystems form and function requires examining the filters that determine which species can establish and persist in a given location.
+
+### Assembly Theory and Ecological Filters
+
+<Accordion>
+  <details>
+    <summary>Regional Species Pool</summary>
+    <div className="content">
+      <p>
+        The evolutionary and biogeographic history of a region determines the potential species available.
+      </p>
+    </div>
+  </details>
+  <details>
+    <summary>Environmental Filters</summary>
+    <div className="content">
+      <p>
+        Physical and chemical conditions screen species based on their physiological tolerances.
+      </p>
+    </div>
+  </details>
+  <details>
+    <summary>Biotic Filters</summary>
+    <div className="content">
+      <p>
+        Species interactions like competition and predation further filter community composition.
+      </p>
+    </div>
+  </details>
+</Accordion>
+
+## 1.4 Global Biodiversity Patterns and Ecosystem Services
+
+Biodiversity varies predictably across Earth's surface, with highest species richness in tropical regions.
+
+### Ecosystem Service Categories
+
+<Accordion>
+  <details>
+    <summary>Provisioning Services</summary>
+    <div className="content">
+      <p>Tangible products like food, fresh water, and timber.</p>
+    </div>
+  </details>
+  <details>
+    <summary>Regulating Services</summary>
+    <div className="content">
+      <p>Benefits like climate regulation, water purification, and pollination.</p>
+    </div>
+  </details>
+  <details>
+    <summary>Cultural Services</summary>
+    <div className="content">
+      <p>Non-material benefits such as recreation, ecotourism, and spiritual values.</p>
+    </div>
+  </details>
+  <details>
+    <summary>Supporting Services</summary>
+    <div className="content">
+      <p>Fundamental processes like soil formation and primary production.</p>
+    </div>
+  </details>
+</Accordion>
+
+## 1.5 Global Threats to Ecosystem Integrity
+
+Current species extinction rates are **100-1,000 times higher than natural background rates**.
+
+## 1.6 Conservation Success Stories and Emerging Solutions
+
+The UN Decade on Ecosystem Restoration aims to restore 350 million hectares, generating a **$9 return per dollar invested**.
+
+## Test Your Knowledge
+
+Ready to test your understanding of these concepts? Take the interactive Chapter 1 quiz.
+
+<a href="/course_website/quiz1/" className="quiz-link">Take the Chapter 1 Quiz →</a>

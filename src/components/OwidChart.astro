@@ -1,0 +1,27 @@
+---
+// src/components/OwidChart.astro
+interface Props {
+  src: string;
+  title: string;
+}
+const { src, title } = Astro.props;
+---
+<div class="owid-chart-container">
+  <iframe
+    src={src}
+    loading="lazy"
+    style="width: 100%; height: 600px; border: 0px none;"
+    title={title}
+    allow="web-share; clipboard-write"
+  ></iframe>
+</div>
+
+<style>
+  .owid-chart-container {
+    margin: 2.5rem 0;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden; /* Ensures the iframe corners are rounded */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+</style>

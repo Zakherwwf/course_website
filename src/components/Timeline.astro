@@ -1,0 +1,69 @@
+---
+// src/components/Timeline.astro
+---
+<div class="timeline">
+    <slot />
+</div>
+
+<style lang="scss">
+    .timeline {
+        position: relative;
+        padding: 2rem 0;
+        margin: 2rem 0;
+        &::before { /* The vertical line */
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--color-border);
+            border-radius: 2px;
+        }
+    }
+
+    :global(.timeline-item) {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-left: 3rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    :global(.timeline-item::before) { /* The dot on the line */
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background-color: var(--color-accent);
+        border: 4px solid var(--color-bg-alt);
+    }
+
+    :global(.timeline-item .date) {
+        display: block;
+        font-family: var(--font-sans);
+        font-weight: 600;
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+    }
+
+    :global(.timeline-item .title) {
+        font-family: var(--font-sans);
+        font-weight: 700;
+        color: var(--color-text);
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    :global(.timeline-item .description) {
+        font-family: var(--font-sans);
+        font-size: 0.95rem;
+        color: var(--color-text-muted);
+        line-height: 1.6;
+    }
+</style>

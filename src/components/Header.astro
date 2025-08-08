@@ -1,0 +1,43 @@
+---
+---
+<header class="site-header">
+    <a href="/course_website/" class="logo">Ecosystem Research</a>
+    <nav>
+        <!-- Replace this with your actual GitHub repo URL -->
+        <a href="https://github.com/your-username/course_website" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+</header>
+
+<style lang="scss">
+    .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.5rem;
+        background-color: rgba(255, 255, 255, 0.8); /* White with blur */
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--color-border);
+        z-index: 10;
+    }
+    .logo {
+        font-family: var(--font-sans);
+        font-weight: 700;
+        color: var(--color-text); /* WWF Black */
+        text-decoration: none;
+        font-size: 1.1rem;
+    }
+    nav a {
+        font-family: var(--font-sans);
+        font-weight: 600;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        &:hover {
+            color: var(--color-text);
+        }
+    }
+</style>

@@ -1,0 +1,67 @@
+---
+// src/components/KeyConceptBox.astro
+interface Props {
+  title: string;
+  imageUrl?: string; // Optional image URL
+  imageCaption?: string; // Optional image caption
+}
+const { title, imageUrl, imageCaption } = Astro.props;
+---
+<div class="concept-box">
+    <h4>{title}</h4>
+    {imageUrl && (
+      <figure class="box-figure">
+        <img src={imageUrl} alt={imageCaption || title} />
+        {imageCaption && <figcaption>{imageCaption}</figcaption>}
+      </figure>
+    )}
+    <div class="content">
+        <slot />
+    </div>
+</div>
+
+<style lang="scss">
+    .concept-box {
+        background-color: var(--color-bg);
+        border: 1px dashed var(--color-border);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+    }
+    h4 {
+        font-family: var(--font-sans);
+        font-size: 1.1rem;
+        color: var(--color-accent);
+        margin: 0 0 1rem 0 !important;
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 1rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .box-figure {
+        margin: 0 0 1.5rem 0;
+    }
+    .box-figure img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        border: 1px solid var(--color-border);
+    }
+    .box-figure figcaption {
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        color: var(--color-text-muted);
+        text-align: center;
+        margin-top: 0.75rem;
+    }
+
+    .content :global(p), .content :global(ul) {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1rem !important;
+    }
+    .content :global(p:last-child), .content :global(ul:last-child) {
+        margin-bottom: 0 !important;
+    }
+</style>

@@ -1,0 +1,77 @@
+---
+// src/components/SpeciesDiversity.astro
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+const diversityData = [
+  { category: "Total Documented", count: "7,200+", icon: "bi-binoculars-fill" },
+  { category: "Vascular Plants", count: "2,200+", icon: "bi-flower1" },
+  { category: "Vertebrates", count: "760+", icon: "bi-fingerprint" },
+  { category: "Invertebrates", count: "4,000+", icon: "bi-bug-fill" },
+  { category: "Marine Species", count: "2,000+", icon: "bi-tsunami" }
+];
+---
+<div class="diversity-container">
+  <h4>Species Diversity at a Glance</h4>
+  <div class="diversity-grid">
+    {diversityData.map(item => (
+      <div class="diversity-item">
+        <i class={`bi ${item.icon}`}></i>
+        <div class="details">
+          <span class="count">{item.count}</span>
+          <span class="category">{item.category}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style lang="scss">
+  .diversity-container {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  h4 {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin: 0 0 1.5rem 0 !important;
+    padding-bottom: 1rem !important;
+    border-bottom: 1px solid var(--color-border) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .diversity-grid {
+    display: grid;
+    gap: 2rem 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .diversity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .diversity-item i {
+    font-size: 2rem;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+  }
+  .count {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    line-height: 1.2;
+  }
+  .category {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+// src/components/Accordion.astro
+---
+<div class="accordion">
+    <slot />
+</div>
+
+<style lang="scss">
+    .accordion {
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        overflow: hidden;
+        margin: 2rem 0;
+    }
+    /* Style direct children (details elements) */
+    .accordion > :global(details) {
+        border-bottom: 1px solid var(--color-border);
+        &:last-of-type {
+            border-bottom: none;
+        }
+    }
+    :global(details > summary) {
+        font-family: var(--font-sans);
+        font-weight: 600;
+        color: var(--color-primary);
+        padding: 1rem 1.5rem;
+        cursor: pointer;
+        list-style: none; /* Remove default marker */
+        position: relative;
+        background-color: var(--color-bg-alt);
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: color-mix(in srgb, var(--color-bg-alt), #000 5%);
+        }
+    }
+    :global(details > summary::after) { /* Custom arrow */
+        content: '▼';
+        position: absolute;
+        right: 1.5rem;
+        transition: transform 0.2s;
+        color: var(--color-text-muted);
+    }
+    :global(details[open] > summary) {
+        border-bottom: 1px solid var(--color-border);
+    }
+    :global(details[open] > summary::after) {
+        transform: rotate(180deg);
+    }
+    :global(details > .content) {
+        padding: 1.5rem;
+        background-color: var(--color-bg);
+    }
+</style>

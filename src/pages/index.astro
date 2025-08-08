@@ -1,0 +1,156 @@
+---
+import LandingLayout from '../layouts/LandingLayout.astro';
+import { TypewriterEffectSmooth } from '../components/TypewriterEffect.jsx';
+import ClientTracingBeam from '../components/ClientTracingBeam.jsx';
+import BackgroundBeams from '../components/BackgroundBeams.jsx';
+import CreativeSection2 from '../components/CreativeSection2.jsx';
+import InstructorsSection from '../components/InstructorsSection.jsx';
+import AnimatedRegistrationCard from '../components/AnimatedRegistrationCard.jsx';
+
+// New typewriter words for the main title
+const typewriterWords = [
+  { text: "WWF", className: "text-blue-900 font-bold" },
+  { text: "North", className: "text-blue-900 font-bold" },
+  { text: "Africa", className: "text-blue-900 font-bold" },
+  { text: "Talent", className: "text-orange-500 font-bold" },
+  { text: "Academy", className: "text-orange-500 font-bold" }
+];
+
+const content = [
+  {
+    title: "What is the Talent Academy?",
+    description: "The WWF North Africa Talent Academy is a premier online learning platform designed to cultivate the next generation of environmental leaders. Our mission is to provide accessible, world-class education on the critical ecosystems of North Africa, empowering individuals with the knowledge and skills to drive meaningful conservation action.",
+    badge: "Our Mission",
+    image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=2070"
+  },
+  {
+    title: "A World-Class Curriculum",
+    description: "Developed with leading ecologists, our curriculum covers everything from global ecosystem principles to region-specific challenges. You will explore biodiversity, traditional ecological knowledge, sustainable management practices, and the latest in conservation science.",
+    badge: "What You'll Learn",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=2070"
+  },
+  {
+    title: "Interactive & Data-Driven",
+    description: "Learning should be an adventure. Our course features interactive maps, engaging quizzes, high-quality video, and data visualizations from authoritative sources like Our World in Data. We believe in learning by doing, not just by reading.",
+    badge: "Our Approach",
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=2070"
+  },
+];
+---
+<LandingLayout title="WWF North Africa Talent Academy">
+
+  <!-- Clean header -->
+  <header class="w-full p-4 border-b border-neutral-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <img src="/course_website/academy-logo.jpg" alt="WWF Academy Logo" class="h-8"/>
+        <span class="font-bold text-neutral-700">Talent Academy</span>
+      </div>
+      <a href="/course_website/chapter1/" class="px-4 py-2 bg-blue-900 text-white rounded-md font-bold text-sm hover:bg-blue-800 transition-all duration-300 hover:scale-105">Enter Course</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Enhanced Hero with Background Beams -->
+    <section class="h-[40rem] flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
+      <!-- Animated Background Beams -->
+      <BackgroundBeams client:load />
+
+      <!-- Hero Content (positioned above background) -->
+      <div class="relative z-10">
+        <p class="text-neutral-600 text-base mb-6">The Future of Conservation Starts Here</p>
+
+        <!-- The main title is now the Typewriter Effect -->
+        <TypewriterEffectSmooth client:load words={typewriterWords} />
+
+        <p class="max-w-2xl mx-auto mt-6 text-lg text-neutral-600">
+          A comprehensive online course on ecosystem science, biodiversity, and conservation strategies for the next generation of environmental leaders.
+        </p>
+        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 mt-10">
+          <a href="/course_website/chapter1/" class="w-48 h-12 rounded-lg bg-blue-900 text-white font-bold flex items-center justify-center transition-transform hover:scale-105">Start the Course</a>
+          <a href="#register" class="w-48 h-12 rounded-lg bg-transparent border border-neutral-400 text-neutral-700 font-bold flex items-center justify-center transition-transform hover:scale-105 hover:bg-neutral-100">Register Interest</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Creative Interactive Content -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+      <!-- Background decoration -->
+      <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-900 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-orange-500 rounded-full blur-3xl"></div>
+      </div>
+
+      <!-- Section header -->
+      <div class="max-w-4xl mx-auto text-center mb-16 px-4 relative z-10">
+        <h2 class="text-4xl md:text-5xl font-bold text-neutral-800 mb-6 font-serif">
+          Why Choose Our Academy?
+        </h2>
+        <p class="text-xl text-neutral-600 leading-relaxed max-w-3xl mx-auto">
+          Discover what makes our approach to conservation education unique and impactful
+        </p>
+      </div>
+
+      <!-- NEW Creative Section -->
+      <CreativeSection2 client:visible content={content} />
+    </section>
+
+    <!-- Section 3: Meet the Instructors -->
+    <section class="py-20 bg-white relative overflow-hidden">
+      <!-- Subtle background decoration -->
+      <div class="absolute inset-0 opacity-3">
+        <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-50 to-orange-50 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/3 left-1/4 w-96 h-96 bg-gradient-to-br from-orange-50 to-blue-50 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative z-10">
+        <InstructorsSection client:visible />
+      </div>
+    </section>
+
+    <!-- Section 4: Enhanced Registration Card -->
+    <section id="register" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <div class="max-w-6xl mx-auto px-4">
+        <!-- Enhanced title section -->
+        <div class="text-center mb-12">
+          <h2 class="text-5xl font-bold text-neutral-800 mb-6 font-serif">Join the Academy</h2>
+          <p class="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
+            Become a part of the next generation of conservation leaders. Register your interest for updates,
+            enrollment information, and exclusive access to our ecosystem research community.
+          </p>
+        </div>
+
+        <!-- Animated Registration Card Component -->
+        <AnimatedRegistrationCard client:load />
+
+        <!-- Trust indicators below the card -->
+        <div class="mt-12 text-center">
+          <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
+            <div class="flex items-center gap-2 text-sm text-neutral-600">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+              </svg>
+              No spam, ever
+            </div>
+            <div class="flex items-center gap-2 text-sm text-neutral-600">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="11" width="18" height="10" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Data protected
+            </div>
+            <div class="flex items-center gap-2 text-sm text-neutral-600">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="22,4 12,14.01 9,11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Unsubscribe anytime
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</LandingLayout>

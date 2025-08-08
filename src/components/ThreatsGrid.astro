@@ -1,0 +1,82 @@
+---
+// src/components/ThreatsGrid.astro
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+const threatData = [
+  { stat: "84%", label: "Wetlands Lost", desc: "Since the 20th century, primarily in the Medjerda Basin.", icon: "bi-droplet-half", color: "#3b82f6" },
+  { stat: "70cm/year", label: "Coastal Erosion", desc: "The highest average rate in the Maghreb region.", icon: "bi-tsunami", color: "#6366f1" },
+  { stat: "96%", label: "Impacted by Desertification", desc: "Nearly the entire territory is affected to some degree.", icon: "bi-thermometer-sun", color: "#f97316" },
+  { stat: "200%", label: "Groundwater Overexploitation", desc: "In southern oasis areas, draining aquifers twice as fast as they replenish.", icon: "bi-moisture", color: "#0ea5e9" },
+  { stat: "30%", label: "Species at Risk", desc: "Of documented species face some level of extinction threat.", icon: "bi-exclamation-diamond-fill", color: "#ef4444" },
+  { stat: "2.8k ha/yr", label: "Annual Forest Loss", desc: "An area equivalent to ~5,000 football fields lost each year.", icon: "bi-tree", color: "#16a34a" }
+];
+---
+<div class="threats-grid">
+  {threatData.map(item => (
+    <div class="threat-card">
+      <div class="icon-wrapper" style={`background-color: ${item.color}1A; color: ${item.color}`}>
+        <i class={`bi ${item.icon}`}></i>
+      </div>
+      <div class="details">
+        <span class="stat">{item.stat}</span>
+        <span class="label">{item.label}</span>
+        <p class="desc">{item.desc}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style lang="scss">
+  .threats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .threat-card {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  .icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    margin: 0 auto;
+  }
+  .icon-wrapper i {
+    font-size: 2rem;
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .stat {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 2.25rem;
+    color: var(--color-text);
+    line-height: 1.2;
+  }
+  .label {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-text);
+  }
+  .desc {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+</style>

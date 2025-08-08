@@ -1,0 +1,147 @@
+---
+import Search from './Search.jsx';
+
+// Updated navigation data with Chapter 6
+const navigation = [
+  {
+    section: "Course Info",
+    items: [
+      { title: "Supporting Materials", url: "/course_website/resources/" },
+    ]
+  },
+  {
+    section: "Course Content",
+    items: [
+      { title: "Chapter 1: Global Principles", url: "/course_website/" },
+      { title: "Chapter 2: Regional Context", url: "/course_website/chapter2/" },
+      { title: "Chapter 3: Tunisian Ecosystems", url: "/course_website/chapter3/" },
+      { title: "Chapter 4: Biodiversity & Services", url: "/course_website/chapter4/" },
+      { title: "Chapter 5: Threats & Challenges", url: "/course_website/chapter5/" },
+      { title: "Chapter 6: Management & Restoration", url: "/course_website/chapter6/" },
+    ]
+  },
+  {
+    section: "Assessments",
+    items: [
+      { title: "Chapter 1 Quiz", url: "/course_website/quiz1/" },
+      // Add links to other quizzes here as you create them
+    ]
+  }
+];
+
+const currentPath = Astro.url.pathname;
+---
+<aside class="left-sidebar">
+    <div class="search-bar-wrapper">
+        <Search client:load />
+    </div>
+
+    <nav class="main-nav">
+        {navigation.map(group => (
+            <details class="nav-group" open>
+                <summary>{group.section}</summary>
+                <ul>
+                    {group.items.map(item => {
+                        // This logic correctly determines the active link.
+                        let isActive = currentPath === item.url;
+
+                        // Special case for the homepage (Chapter 1)
+                        if (item.url === '/course_website/') {
+                            if (currentPath === '/course_website/' || currentPath === '/course_website/index.html') {
+                                isActive = true;
+                            } else {
+                                isActive = false;
+                            }
+                        }
+
+                        return (
+                            <li>
+                                <a href={item.url} class:list={{ active: isActive }}>
+                                    {item.title}
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </details>
+        ))}
+    </nav>
+</aside>
+
+<style lang="scss">
+    .left-sidebar {
+        position: sticky;
+        top: 60px;
+        height: calc(100vh - 60px);
+        border-right: 1px solid var(--color-border);
+        background-color: var(--color-bg-alt); /* Light grey background */
+        display: flex;
+        flex-direction: column;
+
+        @media (max-width: 767px) { display: none; }
+    }
+
+    .search-bar-wrapper {
+        padding: 1rem;
+        border-bottom: 1px solid var(--color-border);
+        flex-shrink: 0;
+        background-color: var(--color-bg);
+    }
+
+    .main-nav {
+        padding: 1rem;
+        overflow-y: auto;
+        flex-grow: 1;
+    }
+
+    .nav-group { margin-bottom: 1rem; }
+
+    .nav-group summary {
+        font-family: var(--font-sans);
+        font-weight: 600;
+        font-size: 0.8rem;
+        color: var(--color-text-muted); /* Muted grey for section headers */
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 0.75rem 0.5rem;
+        cursor: pointer;
+        list-style: none;
+        position: relative;
+    }
+    .nav-group summary::-webkit-details-marker { display: none; }
+    .nav-group summary::before {
+        content: '›';
+        position: absolute;
+        left: -0.5rem;
+        font-size: 1.2rem;
+        transition: transform 0.2s;
+        transform-origin: center;
+    }
+    .nav-group[open] > summary::before { transform: rotate(90deg); }
+
+    .nav-group ul { list-style: none; padding: 0; margin: 0.25rem 0 0 0; }
+    .nav-group li { margin-bottom: 0.25rem; }
+
+    .nav-group a {
+        display: block;
+        padding: 0.6rem 1rem;
+        border-radius: 6px;
+        font-family: var(--font-sans);
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: var(--color-text);
+        text-decoration: none;
+        transition: all 0.2s;
+        border-left: 3px solid transparent;
+    }
+    .nav-group a:hover {
+        background-color: var(--color-bg);
+        color: var(--color-text);
+    }
+    .nav-group a.active {
+        background-color: var(--color-bg);
+        color: var(--color-primary); /* Panda Red for active link */
+        font-weight: 700;
+        border-left-color: var(--color-primary);
+    }
+</style>

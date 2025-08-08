@@ -1,0 +1,90 @@
+---
+// src/components/RegionsGrid.astro
+const regions = [
+  {
+    name: "Mediterranean Basin",
+    area: "2.3 million km²",
+    plants: "25,000 species (52% endemic)",
+    description: "The largest and most historically significant region, its complex topography and long history of human activity have shaped its extraordinary biodiversity."
+  },
+  {
+    name: "California Floristic Province",
+    area: "324,000 km²",
+    plants: "4,426 species (35% endemic)",
+    description: "Topographic complexity and oceanic influence create a mosaic of microclimates, fostering high levels of plant diversity in a compact area."
+  },
+  {
+    name: "Central Chile",
+    area: "90,000 km²",
+    plants: "2,400 species (46% endemic)",
+    description: "Isolated by the Pacific, the Andes, and the Atacama Desert, this region is an 'evolutionary laboratory' for unique plant communities."
+  },
+  {
+    name: "Cape Floristic Province",
+    area: "90,000 km²",
+    plants: "9,000 species (69% endemic)",
+    description: "Boasting the highest plant diversity per area globally, its ancient, nutrient-poor soils and unique fire regimes have driven rampant speciation."
+  },
+  {
+    name: "Southwestern Australia",
+    area: "310,000 km²",
+    plants: "7,380 species (49% endemic)",
+    description: "Characterized by kwongan heathlands on some of the world's oldest soils, its flora shows remarkable specialization to nutrient-poor conditions."
+  }
+];
+---
+<div class="regions-grid">
+  {regions.map(region => (
+    <div class="region-card">
+      <h4>{region.name}</h4>
+      <p class="description">{region.description}</p>
+      <div class="stats">
+        <span><strong>Area:</strong> {region.area}</span>
+        <span><strong>Flora:</strong> {region.plants}</span>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style lang="scss">
+  .regions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .region-card {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  h4 {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin: 0 0 0.75rem 0 !important; /* Override prose */
+    border: none !important;
+    padding: 0 !important;
+  }
+  .description {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    flex-grow: 1; /* Pushes stats to the bottom */
+  }
+  .stats {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--color-text);
+  }
+</style>
