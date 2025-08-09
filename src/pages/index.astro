@@ -39,16 +39,32 @@ const content = [
 ---
 <LandingLayout title="WWF North Africa Talent Academy">
 
-  <!-- Clean header -->
+  <!-- Enhanced header with clear navigation hierarchy -->
   <header class="w-full p-4 border-b border-neutral-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <!-- Logo and brand -->
       <div class="flex items-center gap-2">
         <img src="/course_website/academy-logo.jpg" alt="WWF Academy Logo" class="h-8"/>
         <span class="font-bold text-neutral-700">Talent Academy</span>
       </div>
-      <div class="flex items-center space-x-4">
-        <a href="/about-wwf" class="text-neutral-600 hover:text-neutral-900 font-medium">About WWF</a>
-        <a href="/course_website/chapter1/" class="px-4 py-2 bg-blue-900 text-white rounded-md font-bold text-sm hover:bg-blue-800 transition-all duration-300 hover:scale-105">Enter Course</a>
+
+      <!-- Navigation - Clear hierarchy showing the learning path -->
+      <div class="flex items-center space-x-6">
+        <!-- Step 1: Learn about WWF - More prominent positioning -->
+        <a
+          href="/course_website/about-wwf/"
+          class="px-4 py-2 text-neutral-700 hover:text-blue-900 font-semibold border border-neutral-300 rounded-md hover:border-blue-900 transition-all duration-300 hover:scale-105"
+        >
+          About WWF
+        </a>
+
+        <!-- Step 2: Enter the course - Primary action -->
+        <a
+          href="/course_website/chapter1/"
+          class="px-4 py-2 bg-blue-900 text-white rounded-md font-bold text-sm hover:bg-blue-800 transition-all duration-300 hover:scale-105"
+        >
+          Enter Course
+        </a>
       </div>
     </div>
   </header>
@@ -69,10 +85,30 @@ const content = [
         <p class="max-w-2xl mx-auto mt-6 text-lg text-neutral-600">
           A comprehensive online course on ecosystem science, biodiversity, and conservation strategies for the next generation of environmental leaders.
         </p>
+
+        <!-- Updated CTA buttons with clear learning path -->
         <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 mt-10">
-          <a href="/course_website/chapter1/" class="w-48 h-12 rounded-lg bg-blue-900 text-white font-bold flex items-center justify-center transition-transform hover:scale-105">Start the Course</a>
-          <a href="#register" class="w-48 h-12 rounded-lg bg-transparent border border-neutral-400 text-neutral-700 font-bold flex items-center justify-center transition-transform hover:scale-105 hover:bg-neutral-100">Register Interest</a>
+          <!-- Primary path: Learn about WWF first -->
+          <a
+            href="/course_website/about-wwf/"
+            class="w-48 h-12 rounded-lg bg-blue-900 text-white font-bold flex items-center justify-center transition-transform hover:scale-105"
+          >
+            Learn About WWF
+          </a>
+
+          <!-- Secondary path: Direct to course for returning users -->
+          <a
+            href="/course_website/chapter1/"
+            class="w-48 h-12 rounded-lg bg-transparent border border-neutral-400 text-neutral-700 font-bold flex items-center justify-center transition-transform hover:scale-105 hover:bg-neutral-100"
+          >
+            Start Course
+          </a>
         </div>
+
+        <!-- Small helper text to guide user journey -->
+        <p class="text-sm text-neutral-500 mt-4 max-w-md mx-auto">
+          New to WWF? Start with "Learn About WWF" to understand our mission and conservation programs.
+        </p>
       </div>
     </section>
 
@@ -94,7 +130,7 @@ const content = [
         </p>
       </div>
 
-      <!-- NEW Creative Section -->
+      <!-- Creative Section showcasing the academy features -->
       <CreativeSection2 client:visible content={content} />
     </section>
 
@@ -126,9 +162,9 @@ const content = [
         <!-- Animated Registration Card Component -->
         <AnimatedRegistrationCard client:load />
 
-        <!-- Trust indicators below the card -->
+        <!-- Trust indicators and next steps -->
         <div class="mt-12 text-center">
-          <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
+          <div class="flex flex-wrap justify-center items-center gap-8 opacity-60 mb-8">
             <div class="flex items-center gap-2 text-sm text-neutral-600">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -151,6 +187,20 @@ const content = [
               </svg>
               Unsubscribe anytime
             </div>
+          </div>
+
+          <!-- Clear next step guidance -->
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-2xl mx-auto">
+            <h3 class="text-lg font-semibold text-blue-900 mb-2">Ready to Begin Your Learning Journey?</h3>
+            <p class="text-blue-700 mb-4">
+              After registering, explore our organization's mission and conservation programs before diving into the course content.
+            </p>
+            <a
+              href="/course_website/about-wwf/"
+              class="inline-flex items-center px-4 py-2 bg-blue-900 text-white rounded-md font-medium hover:bg-blue-800 transition-colors"
+            >
+              Discover WWF North Africa →
+            </a>
           </div>
         </div>
       </div>
