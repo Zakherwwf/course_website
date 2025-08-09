@@ -1,52 +1,476 @@
 ---
 // src/components/Realms.astro
+const realms = [
+  {
+    id: 1,
+    name: "Terrestrial",
+    description: "Land-based ecosystems where atmospheric processes dominate represent the most familiar realm to humans.",
+    characteristics: ["Atmospheric dependence", "Temperature fluctuations", "Gravity effects", "Water limitation"],
+    coverage: "29%",
+    dominantProcess: "Photosynthesis",
+    examples: ["Tropical rainforests", "Arctic tundra", "Grasslands", "Desert systems"]
+  },
+  {
+    id: 2,
+    name: "Freshwater",
+    description: "Continental water bodies and associated riparian zones create unique conditions where water is abundant.",
+    characteristics: ["Flow dynamics", "Oxygen variability", "Seasonal changes", "Nutrient transport"],
+    coverage: "2.5%",
+    dominantProcess: "Current flow",
+    examples: ["Mountain streams", "Lowland rivers", "Lakes", "Wetland systems"]
+  },
+  {
+    id: 3,
+    name: "Marine",
+    description: "Ocean and coastal ecosystems influenced by seawater chemistry represent Earth's largest biome by volume.",
+    characteristics: ["Vertical stratification", "Salinity gradients", "Pressure changes", "Three-dimensional"],
+    coverage: "71%",
+    dominantProcess: "Thermohaline circulation",
+    examples: ["Surface waters", "Deep ocean", "Coral reefs", "Hydrothermal vents"]
+  },
+  {
+    id: 4,
+    name: "Subterranean",
+    description: "Underground ecosystems in caves, aquifers, and deep soils where sunlight never penetrates.",
+    characteristics: ["Perpetual darkness", "Chemical energy", "Stable temperatures", "Limited resources"],
+    coverage: "0.2%",
+    dominantProcess: "Chemosynthesis",
+    examples: ["Cave systems", "Groundwater", "Deep soil", "Rock crevices"]
+  },
+  {
+    id: 5,
+    name: "Atmospheric",
+    description: "Aerial ecosystems including airborne microbial communities that influence global biogeochemical cycles.",
+    characteristics: ["Global transport", "Aerobic conditions", "UV exposure", "Temperature gradients"],
+    coverage: "100%*",
+    dominantProcess: "Wind circulation",
+    examples: ["Cloud communities", "Aeroplankton", "Spore transport", "Migrating organisms"]
+  }
+];
 ---
-<div class="realms-container">
-  <div>
-    <dt>1. Terrestrial Realm</dt>
-    <dd>Land-based ecosystems where atmospheric processes dominate represent the most familiar realm to humans. Here, plants must obtain water from soil and atmosphere, and all organisms must cope with gravity's full effects and temperature fluctuations that can span dozens of degrees within a single day. The terrestrial realm encompasses everything from tropical rainforests with their towering canopies and incredible biodiversity to arctic tundra where plants grow only centimeters tall and growing seasons last mere months. What unites these diverse systems is their dependence on atmospheric gases for photosynthesis and respiration, and their need to manage water as a potentially limiting resource..</dd>
+
+<div class="realms-framework">
+  <div class="framework-header">
+    <div class="header-content">
+      <h3>IUCN Global Ecosystem Typology</h3>
+      <p>Five fundamental realms organizing Earth's biosphere by dominant environmental medium</p>
+    </div>
+    <div class="framework-stats">
+      <div class="stat-item">
+        <span class="stat-number">5</span>
+        <span class="stat-label">Realms</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">25</span>
+        <span class="stat-label">Biomes</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">110+</span>
+        <span class="stat-label">Groups</span>
+      </div>
+    </div>
   </div>
-  <div>
-    <dt>2. Freshwater Realm</dt>
-    <dd>Continental water bodies and associated riparian zones create unique conditions where water availability is abundant, but other factors like oxygen levels, current flow, and seasonal variations become critical. Freshwater systems connect terrestrial and marine realms, serving as corridors for nutrients, sediments, and organisms. Rivers exemplify the dynamic nature of freshwater ecosystems. A mountain stream tumbling over rocks creates highly oxygenated conditions that support specialized insect larvae, while a slow-moving lowland river develops entirely different communities adapted to warmer, murkier conditions. These differences in physical conditions drive distinct ecosystem functions and services.</dd>
+
+  <div class="realms-grid">
+    {realms.map((realm, index) => (
+      <div class="realm-item" data-realm={realm.id} style={`--item-index: ${index}`}>
+        <div class="realm-header">
+          <div class="realm-number">{String(realm.id).padStart(2, '0')}</div>
+          <div class="realm-title">
+            <h4>{realm.name}</h4>
+            <div class="realm-meta">
+              <span class="coverage-badge">
+                <span class="coverage-label">Coverage</span>
+                <span class="coverage-value">{realm.coverage}</span>
+              </span>
+              <span class="process-badge">
+                <span class="process-label">Key Process</span>
+                <span class="process-value">{realm.dominantProcess}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="realm-content">
+          <p class="realm-description">{realm.description}</p>
+
+          <div class="characteristics-section">
+            <h5>Defining Characteristics</h5>
+            <div class="characteristics-list">
+              {realm.characteristics.map(char => (
+                <span class="characteristic-tag">{char}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="examples-section">
+            <h5>Representative Systems</h5>
+            <div class="examples-grid">
+              {realm.examples.map((example, idx) => (
+                <div class="example-item">
+                  <div class="example-dot"></div>
+                  <span class="example-text">{example}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="realm-border"></div>
+      </div>
+    ))}
   </div>
-  <div>
-    <dt>3. Marine Realm</dt>
-    <dd>Ocean and coastal ecosystems influenced by seawater chemistry represent Earth's largest biome by volume. The unique properties of seawater – its salinity, density, and chemical composition – create conditions radically different from terrestrial or freshwater systems. Marine ecosystems range from the sunlit surface waters where phytoplankton conduct photosynthesis to the perpetually dark deep ocean where specialized communities depend entirely on organic matter falling from above or energy from hydrothermal vents. The three-dimensional nature of marine environments creates opportunities for complex vertical migrations and layered communities that have no terrestrial equivalent.</dd>
-  </div>
-  <div>
-    <dt>4. Subterranean Realm</dt>
-    <dd>Underground ecosystems in caves, aquifers, and deep soils represent perhaps the least understood realm. Here, sunlight never penetrates, and organisms must either bring energy from the surface or derive it from chemical processes. These systems challenge our surface-based assumptions about life's requirements. Cave ecosystems often harbor highly specialized species that have evolved unique adaptations to perpetual darkness, including enhanced sensory systems and modified metabolism. Groundwater systems support vast microbial communities that play crucial roles in nutrient cycling and water purification, even though we rarely see direct evidence of their activities.</dd>
-  </div>
-  <div>
-    <dt>5. Atmospheric Realm</dt>
-    <dd>Aerial ecosystems including airborne microbial communities represent the newest addition to ecosystem classification. While we once thought of the atmosphere simply as the medium through which other organisms moved, we now recognize that significant biological processes occur in the air itself. Atmospheric microorganisms influence cloud formation, participate in long-distance nutrient transport, and contribute to biogeochemical cycles on a global scale. Understanding these aerial communities becomes increasingly important as we recognize their roles in climate regulation and disease transmission.</dd>
+
+  <div class="framework-footer">
+    <div class="footer-note">
+      <p><strong>Classification Principle:</strong> Realms are distinguished by the dominant physical medium supporting life and the primary environmental processes that constrain ecosystem assembly and functioning.</p>
+      <p class="coverage-note">* Atmospheric realm overlays all terrestrial and marine surfaces</p>
+    </div>
   </div>
 </div>
 
-<style lang="scss">
-    .realms-container {
-        display: grid;
-        gap: 1.5rem;
-        margin: 2rem 0;
+<style>
+  .realms-framework {
+    margin: 3rem 0;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .framework-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem 2rem 1.5rem 2rem;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+  }
+
+  .header-content h3 {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  .header-content p {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .framework-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--color-border);
+  }
+
+  .realms-grid {
+    display: grid;
+    gap: 0;
+  }
+
+  .realm-item {
+    position: relative;
+    padding: 2rem;
+    border-bottom: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+    background: var(--color-bg);
+  }
+
+  .realm-item:last-child {
+    border-bottom: none;
+  }
+
+  .realm-item:hover {
+    background: var(--color-bg-alt);
+  }
+
+  .realm-item:hover .realm-border {
+    transform: scaleX(1);
+  }
+
+  .realm-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .realm-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .realm-number {
+    font-family: var(--font-sans);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--color-border);
+    line-height: 1;
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+  }
+
+  .realm-item:hover .realm-number {
+    color: var(--color-primary);
+  }
+
+  .realm-title {
+    flex: 1;
+  }
+
+  .realm-title h4 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+  }
+
+  .realm-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .coverage-badge,
+  .process-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+  }
+
+  .coverage-label,
+  .process-label {
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .coverage-value,
+  .process-value {
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  .realm-content {
+    margin-left: 4.5rem;
+  }
+
+  .realm-description {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin: 0 0 2rem 0;
+  }
+
+  .characteristics-section,
+  .examples-section {
+    margin-bottom: 2rem;
+  }
+
+  .characteristics-section:last-child,
+  .examples-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .characteristics-section h5,
+  .examples-section h5 {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 1rem 0;
+  }
+
+  .characteristics-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .characteristic-tag {
+    padding: 0.5rem 1rem;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text);
+    transition: all 0.2s ease;
+  }
+
+  .characteristic-tag:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .example-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    transition: all 0.2s ease;
+  }
+
+  .example-item:hover {
+    border-color: var(--color-primary);
+  }
+
+  .example-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .example-text {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .framework-footer {
+    padding: 1.5rem 2rem;
+    background: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .footer-note p {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .footer-note p:last-child {
+    margin-bottom: 0;
+  }
+
+  .coverage-note {
+    font-style: italic;
+    font-size: 0.8rem !important;
+  }
+
+  @media (max-width: 768px) {
+    .framework-header {
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: stretch;
     }
-    .realms-container > div {
-        background-color: var(--color-bg-alt);
-        padding: 1.5rem;
-        border-radius: 8px;
-        border: 1px solid var(--color-border);
+
+    .framework-stats {
+      justify-content: center;
     }
-    .realms-container dt {
-        font-family: var(--font-sans);
-        font-weight: 700;
-        font-size: 1.2rem;
-        color: var(--color-primary);
-        margin-bottom: 0.75rem;
+
+    .realm-item {
+      padding: 1.5rem;
     }
-    .realms-container dd {
-        margin-left: 0;
-        font-family: var(--font-sans);
-        font-size: 0.95rem;
-        color: var(--color-text-muted);
+
+    .realm-header {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
     }
+
+    .realm-content {
+      margin-left: 0;
+    }
+
+    .realm-number {
+      font-size: 2rem;
+      align-self: center;
+    }
+
+    .realm-meta {
+      justify-content: center;
+    }
+
+    .examples-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .characteristics-list {
+      justify-content: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .realm-item,
+    .realm-border,
+    .characteristic-tag,
+    .example-item {
+      transition: none;
+    }
+
+    .realm-item:hover .realm-border {
+      transform: scaleX(0);
+    }
+  }
 </style>
