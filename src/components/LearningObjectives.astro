@@ -1,44 +1,489 @@
 ---
 // src/components/LearningObjectives.astro
 ---
-<div class="objectives-box">
-    <h3>Learning Objectives</h3>
-    <slot />
+<div class="objectives-container">
+    <div class="objectives-header">
+        <div class="icon-wrapper">
+            <svg class="objectives-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M12 16L13.09 22.26L20 23L13.09 23.74L12 30L10.91 23.74L4 23L10.91 22.26L12 16Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="header-text">
+            <h3>Learning Objectives</h3>
+            <p class="objectives-subtitle">By the end of this chapter, you will be able to:</p>
+        </div>
+    </div>
+
+    <div class="objectives-content">
+        <div class="progress-indicator">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <span class="progress-text">0 of 5 objectives</span>
+        </div>
+
+        <div class="objectives-list">
+            <slot />
+        </div>
+
+        <div class="objectives-footer">
+            <div class="completion-badge">
+                <svg class="badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M8 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Track your progress as you learn</span>
+            </div>
+        </div>
+    </div>
 </div>
 
 <style lang="scss">
-    .objectives-box {
-        background-color: var(--color-bg-alt);
-        border-left: 4px solid var(--color-primary);
-        border-radius: 0 8px 8px 0;
-        padding: 1.5rem 2rem;
+    .objectives-container {
+        background: linear-gradient(135deg, var(--color-bg-alt) 0%, color-mix(in srgb, var(--color-bg-alt), var(--color-primary) 5%) 100%);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
         margin: 2rem 0;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 2px 12px rgba(0, 76, 118, 0.06);
+        transition: all 0.3s ease;
     }
+
+    .objectives-container:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(0, 76, 118, 0.1);
+    }
+
+    .objectives-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    }
+
+    .objectives-header {
+        padding: 1.25rem 1.5rem 0.75rem 1.5rem;
+        border-bottom: 1px solid color-mix(in srgb, var(--color-border), transparent 50%);
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .icon-wrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 76, 118, 0.15);
+        flex-shrink: 0;
+    }
+
+    .objectives-icon {
+        color: white;
+        width: 18px;
+        height: 18px;
+        animation: sparkle 2s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+        0%, 100% { transform: scale(1) rotate(0deg); }
+        50% { transform: scale(1.05) rotate(3deg); }
+    }
+
+    .header-text {
+        flex: 1;
+    }
+
     h3 {
-        font-family: var(--font-sans);
+        font-family: var(--font-serif);
         font-size: 1.25rem;
+        font-weight: 700;
         color: var(--color-primary);
-        margin-top: 0 !important; /* Override prose styles */
-        border-bottom: none !important;
-        padding-bottom: 0 !important;
-        margin-bottom: 1rem !important;
+        margin: 0 !important;
+        border: none !important;
+        padding: 0 !important;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
     }
-    /* Style the <ol> passed in from MDX */
-    :global(.objectives-box ol) {
+
+    .objectives-subtitle {
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        color: var(--color-text-muted);
+        margin: 0.25rem 0 0 0;
+        font-weight: 500;
+    }
+
+    .objectives-content {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .progress-indicator {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+        padding: 0.75rem 1rem;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
+        border: 1px solid rgba(0, 76, 118, 0.08);
+    }
+
+    .progress-bar {
+        flex: 1;
+        height: 6px;
+        background: var(--color-border);
+        border-radius: 3px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+        border-radius: 3px;
+        transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+
+    .progress-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        animation: shimmer 2s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    .progress-text {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--color-text);
+        white-space: nowrap;
+    }
+
+    .objectives-list {
+        margin-bottom: 1rem;
+    }
+
+    /* Enhanced list styling */
+    :global(.objectives-container ol) {
         list-style: none;
         padding-left: 0;
         font-family: var(--font-sans);
+        counter-reset: objective-counter;
+        display: grid;
+        gap: 0.75rem;
     }
-    :global(.objectives-box li) {
-        padding-left: 2rem;
+
+    :global(.objectives-container li) {
         position: relative;
-        margin-bottom: 0.75rem !important;
+        padding: 0.875rem 1rem 0.875rem 3rem;
+        margin-bottom: 0 !important;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 76, 118, 0.08);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        counter-increment: objective-counter;
+        font-size: 0.9rem;
+        line-height: 1.5;
     }
-    :global(.objectives-box li::before) {
-        content: '✔';
+
+    :global(.objectives-container li:hover) {
+        transform: translateX(2px);
+        background: rgba(255, 255, 255, 0.95);
+        border-color: var(--color-primary);
+        box-shadow: 0 2px 8px rgba(0, 76, 118, 0.08);
+    }
+
+    :global(.objectives-container li.completed) {
+        background: linear-gradient(135deg,
+            color-mix(in srgb, var(--color-primary), transparent 90%) 0%,
+            color-mix(in srgb, var(--color-accent), transparent 90%) 100%);
+        border-color: var(--color-primary);
+    }
+
+    :global(.objectives-container li::before) {
+        content: counter(objective-counter);
         position: absolute;
-        left: 0;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.75rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 4px rgba(0, 76, 118, 0.15);
+    }
+
+    :global(.objectives-container li.completed::before) {
+        content: '✓';
+        background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    :global(.objectives-container li::after) {
+        content: '';
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 4px;
+        background: var(--color-text-muted);
+        border-radius: 50%;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    :global(.objectives-container li.completed::after) {
+        opacity: 1;
+        background: #10b981;
+        box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+    }
+
+    .objectives-footer {
+        text-align: center;
+        padding-top: 1rem;
+        border-top: 1px solid color-mix(in srgb, var(--color-border), transparent 50%);
+    }
+
+    .completion-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 76, 118, 0.08);
+        border-radius: 20px;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+        transition: all 0.3s ease;
+    }
+
+    .completion-badge:hover {
+        background: rgba(255, 255, 255, 0.95);
+        transform: translateY(-1px);
+    }
+
+    .badge-icon {
         color: var(--color-primary);
-        font-weight: bold;
+        flex-shrink: 0;
+        width: 14px;
+        height: 14px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .objectives-header {
+            padding: 1rem 1.25rem 0.5rem 1.25rem;
+            gap: 0.75rem;
+        }
+
+        .objectives-content {
+            padding: 1rem 1.25rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+        }
+
+        .objectives-subtitle {
+            font-size: 0.8rem;
+        }
+
+        .icon-wrapper {
+            width: 32px;
+            height: 32px;
+        }
+
+        .objectives-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .progress-indicator {
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: stretch;
+            padding: 0.5rem 0.75rem;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 0.75rem;
+        }
+
+        :global(.objectives-container li) {
+            padding: 0.75rem 0.75rem 0.75rem 2.75rem;
+            font-size: 0.85rem;
+        }
+
+        :global(.objectives-container li::before) {
+            width: 20px;
+            height: 20px;
+            left: 0.6rem;
+            font-size: 0.7rem;
+        }
+    }
+
+    /* Reduced motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        .objectives-icon,
+        .progress-fill::after,
+        :global(.objectives-container li),
+        :global(.objectives-container li::before) {
+            animation: none !important;
+            transition: none !important;
+        }
+
+        .objectives-container:hover {
+            transform: none;
+        }
+
+        :global(.objectives-container li:hover) {
+            transform: none;
+        }
     }
 </style>
+
+<script>
+    // Enhanced interaction and progress tracking
+    document.addEventListener('DOMContentLoaded', function() {
+        const objectivesContainer = document.querySelector('.objectives-container');
+        if (!objectivesContainer) return;
+
+        const objectiveItems = objectivesContainer.querySelectorAll('li');
+        const progressFill = objectivesContainer.querySelector('.progress-fill');
+        const progressText = objectivesContainer.querySelector('.progress-text');
+        const totalObjectives = objectiveItems.length;
+
+        let completedCount = 0;
+
+        // Initialize progress
+        updateProgress();
+
+        // Add click handlers for objective items
+        objectiveItems.forEach((item, index) => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('completed');
+
+                // Update completed count
+                completedCount = objectivesContainer.querySelectorAll('li.completed').length;
+                updateProgress();
+
+                // Add a subtle animation
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+
+            // Add keyboard accessibility
+            item.setAttribute('tabindex', '0');
+            item.setAttribute('role', 'checkbox');
+            item.setAttribute('aria-checked', 'false');
+
+            item.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        function updateProgress() {
+            const percentage = (completedCount / totalObjectives) * 100;
+
+            if (progressFill) {
+                progressFill.style.width = `${percentage}%`;
+            }
+
+            if (progressText) {
+                progressText.textContent = `${completedCount} of ${totalObjectives} objectives`;
+            }
+
+            // Update aria attributes
+            objectiveItems.forEach(item => {
+                const isCompleted = item.classList.contains('completed');
+                item.setAttribute('aria-checked', isCompleted.toString());
+            });
+
+            // Celebration effect when all completed
+            if (completedCount === totalObjectives && totalObjectives > 0) {
+                celebrate();
+            }
+        }
+
+        function celebrate() {
+            // Add a celebration class for visual feedback
+            objectivesContainer.classList.add('all-completed');
+
+            // Create confetti-like effect
+            const celebration = document.createElement('div');
+            celebration.innerHTML = '🎉';
+            celebration.style.cssText = `
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 2rem;
+                animation: bounce 0.6s ease-in-out;
+                pointer-events: none;
+            `;
+
+            objectivesContainer.style.position = 'relative';
+            objectivesContainer.appendChild(celebration);
+
+            setTimeout(() => {
+                celebration.remove();
+            }, 1000);
+
+            // Add bounce animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes bounce {
+                    0%, 20%, 53%, 80%, 100% { transform: translateY(0) scale(1); }
+                    40%, 43% { transform: translateY(-15px) scale(1.1); }
+                    70% { transform: translateY(-7px) scale(1.05); }
+                    90% { transform: translateY(-2px) scale(1.02); }
+                }
+                .all-completed {
+                    animation: glow 2s ease-in-out;
+                }
+                @keyframes glow {
+                    0%, 100% { box-shadow: 0 4px 20px rgba(0, 76, 118, 0.08); }
+                    50% { box-shadow: 0 8px 40px rgba(0, 76, 118, 0.2); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    });
+</script>

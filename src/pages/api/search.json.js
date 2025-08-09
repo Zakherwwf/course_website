@@ -1,182 +1,104 @@
 // src/pages/api/search.json.js
 
-import { getCollection } from 'astro:content';
+// Using import.meta.glob to dynamically import all pages at build time
+// The '?raw' query loads the file content as a string.
+// We are interested in .md, .mdx, and .astro files from src/pages.
+const modules = import.meta.glob('/src/pages/**/*.{md,mdx,astro}', {
+  query: '?raw',
+  import: 'default'
+});
 
-// Function to strip HTML tags and clean text
-function stripHtml(html) {
-  return html.replace(/<[^>]*>?/gm, '');
-}
+// Function to extract text content from markdown/MDX/Astro files
+// This function attempts to remove frontmatter, JSX/MDX components, and markdown syntax
+function extractTextFromContent(content) {
+  // 1. Remove frontmatter (if present)
+  const withoutFrontmatter = content.replace(/^---\n([\s\S]*?)\n---/, '');
 
-// Function to extract text content from markdown/MDX
-function extractTextFromMarkdown(content) {
-  // Remove frontmatter if present
-  const withoutFrontmatter = content.replace(/^---[\s\S]*?---/, '');
-
-  // Remove MDX/JSX components (like <LearningObjectives>, <Map>, etc.)
+  // 2. Remove Astro/MDX/JSX components (anything within <...>)
+  // This is a basic regex and might not catch all complex cases but works for most.
   const withoutComponents = withoutFrontmatter.replace(/<[^>]*>/g, '');
 
-  // Remove markdown syntax
+  // 3. Remove markdown syntax
   const withoutMarkdown = withoutComponents
-    .replace(/#{1,6}\s+/g, '') // Remove headers
-    .replace(/\*{1,2}([^*]+)\*{1,2}/g, '$1') // Remove bold/italic
-    .replace(/`([^`]+)`/g, '$1') // Remove inline code
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Remove links, keep text
-    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1') // Remove images, keep alt text
-    .replace(/```[\s\S]*?```/g, '') // Remove code blocks
-    .replace(/^\s*[-*+]\s+/gm, '') // Remove list markers
-    .replace(/^\s*\d+\.\s+/gm, '') // Remove numbered list markers
-    .replace(/^\s*>\s+/gm, '') // Remove blockquotes
+    .replace(/#{1,6}\s+/g, '') // Headers (e.g., # Title)
+    .replace(/\*{1,2}([^*]+)\*{1,2}/g, '$1') // Bold/italic (e.g., **text**)
+    .replace(/`([^`]+)`/g, '$1') // Inline code (e.g., `code`)
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Links (e.g., [text](url), keeps text)
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1') // Images (e.g., ![alt](url), keeps alt text)
+    .replace(/```[\s\S]*?```/g, '') // Code blocks
+    .replace(/^\s*[-*+]\s+/gm, '') // List markers (e.g., - item)
+    .replace(/^\s*\d+\.\s+/gm, '') // Numbered list markers (e.g., 1. item)
+    .replace(/^\s*>\s+/gm, '') // Blockquotes
     .replace(/\n{2,}/g, '\n') // Replace multiple newlines with single
     .trim();
 
   return withoutMarkdown;
 }
 
+// Main GET function for the API route
 export async function GET() {
   const searchableData = [];
 
-  try {
-    // If you're using Astro Content Collections
-    if (typeof getCollection !== 'undefined') {
-      try {
-        // Try to get from content collections first
-        const posts = await getCollection('blog'); // Adjust collection name as needed
+  for (const path in modules) {
+    // Exclude API routes and quiz pages from the search index
+    if (path.includes('/api/') || path.includes('/quiz')) continue;
 
-        posts.forEach(post => {
-          if (!post.slug.includes('quiz')) {
-            const cleanText = extractTextFromMarkdown(post.body || '');
-            searchableData.push({
-              slug: `/blog/${post.slug}`, // Adjust path as needed
-              title: post.data.title,
-              body: cleanText,
-            });
-          }
-        });
-      } catch (e) {
-        console.log('Content collections not available, falling back to file system approach');
+    try {
+      // Dynamically import the raw content of the file
+      const content = await modules[path]();
+
+      // Extract the slug (URL path) from the file path
+      let slug = path
+        .replace('/src/pages', '') // Remove the '/src/pages' prefix
+        .replace(/\.(md|mdx|astro)$/, ''); // Remove file extensions
+
+      // Astro automatically creates index.html for folders or /index files.
+      // We want the slug to be '/about-wwf/' instead of '/about-wwf/index'
+      if (slug.endsWith('/index')) {
+        slug = slug.slice(0, -5); // Remove '/index'
       }
-    }
 
-    // Fallback: Direct file system approach if content collections aren't set up
-    if (searchableData.length === 0) {
-      // Import all MDX files
-      const modules = import.meta.glob('/src/pages/**/*.{md,mdx}', {
-        query: '?raw',
-        import: 'default'
+      // Ensure a trailing slash for consistent URLs, unless it's the root '/'
+      if (slug !== '/' && !slug.endsWith('/')) {
+        slug += '/';
+      }
+
+      // Extract frontmatter to get the title
+      const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+      let title = 'Untitled Page'; // Default title if not found
+
+      if (frontmatterMatch) {
+        const frontmatter = frontmatterMatch[1];
+        const titleMatch = frontmatter.match(/title:\s*["']?([^"'\n]+)["']?/);
+        if (titleMatch && titleMatch[1]) {
+          title = titleMatch[1].trim();
+        }
+      } else if (path.includes('/index.astro')) {
+          // Special case for homepage, usually doesn't have frontmatter but we know its title
+          title = "WWF North Africa Talent Academy";
+      }
+
+
+      // Extract and clean the body content for indexing
+      const cleanText = extractTextFromContent(content);
+
+      searchableData.push({
+        slug: slug,
+        title: title,
+        body: cleanText,
       });
 
-      for (const path in modules) {
-        // Skip quiz pages and API routes
-        if (path.includes('/quiz') || path.includes('/api/')) continue;
-
-        try {
-          const content = await modules[path]();
-
-          // Extract the slug from the file path
-          const slug = path
-            .replace('/src/pages', '')
-            .replace(/\.(md|mdx)$/, '')
-            .replace(/\/index$/, '');
-
-          // Extract frontmatter for title
-          const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-          let title = 'Untitled';
-
-          if (frontmatterMatch) {
-            const frontmatter = frontmatterMatch[1];
-            const titleMatch = frontmatter.match(/title:\s*["']?([^"'\n]+)["']?/);
-            if (titleMatch) {
-              title = titleMatch[1];
-            }
-          }
-
-          // Extract and clean the body content
-          const cleanText = extractTextFromMarkdown(content);
-
-          searchableData.push({
-            slug: slug || '/',
-            title: title,
-            body: cleanText,
-          });
-        } catch (error) {
-          console.warn(`Failed to process ${path}:`, error.message);
-        }
-      }
-    }
-
-    return new Response(JSON.stringify(searchableData), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'max-age=3600' // Cache for 1 hour
-      }
-    });
-
-  } catch (error) {
-    console.error('Search API error:', error);
-
-    return new Response(JSON.stringify({
-      error: 'Failed to generate search index',
-      details: error.message
-    }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  }
-}
-
-// Alternative approach: If you want to use a different method
-export async function GET_ALTERNATIVE() {
-  const searchableData = [];
-
-  // Get all page files using dynamic imports
-  const pageFiles = [
-    '/src/pages/index.astro',
-    '/src/pages/chapter1.md',
-    '/src/pages/chapter2.md',
-    '/src/pages/chapter3.md',
-    // Add your specific pages here
-  ];
-
-  for (const filePath of pageFiles) {
-    try {
-      // For .md/.mdx files, you can import them as raw text
-      const response = await fetch(`${filePath}?raw`);
-      if (response.ok) {
-        const content = await response.text();
-
-        // Extract title and clean content
-        const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-        let title = 'Untitled';
-
-        if (frontmatterMatch) {
-          const frontmatter = frontmatterMatch[1];
-          const titleMatch = frontmatter.match(/title:\s*["']?([^"'\n]+)["']?/);
-          if (titleMatch) {
-            title = titleMatch[1];
-          }
-        }
-
-        const cleanText = extractTextFromMarkdown(content);
-        const slug = filePath.replace('/src/pages', '').replace(/\.(astro|md|mdx)$/, '');
-
-        searchableData.push({
-          slug: slug || '/',
-          title: title,
-          body: cleanText,
-        });
-      }
     } catch (error) {
-      console.warn(`Failed to process ${filePath}:`, error.message);
+      console.warn(`Failed to process ${path} for search index:`, error.message);
     }
   }
 
+  // Return the JSON response
   return new Response(JSON.stringify(searchableData), {
     status: 200,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cache-Control': 'public, max-age=3600' // Cache for 1 hour for browsers/CDNs
     }
   });
 }
