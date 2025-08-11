@@ -28,6 +28,7 @@ import Accordion from '@/components/Accordion.astro';
 import Realms from '@/components/Realms.astro';
 import InteractiveTypology from '@/components/InteractiveTypology.jsx';
 import VideoEmbed from '@/components/VideoEmbed.astro'; // <-- ADD THIS IMPORT
+import { ThreatMagnitudeSlider, PlanetaryBoundariesWheel, ConservationTimelineSlider } from '@/components/ThreatMagnitudeSlider.jsx';
 
 # Chapter 1: Global Ecosystem Principles
 
@@ -313,6 +314,8 @@ Understanding the scale of current threats requires examining specific categorie
 
 - **Coral reef degradation affecting 50% of reefs in just 30 years demonstrates how quickly ecosystem collapse can occur once critical thresholds are exceeded.** Coral reefs represent particularly sensitive ecosystems that respond rapidly to environmental changes, making them excellent indicators of broader ecosystem health trends. The rapid pace of coral reef degradation reflects how multiple threats interact to overwhelm ecosystem resilience. Rising ocean temperatures cause coral bleaching, while ocean acidification makes it harder for corals to build their calcium carbonate skeletons. Pollution and overfishing further stress coral communities, reducing their ability to recover from bleaching events.
 
+<ThreatMagnitudeSlider client:load />
+
 **Climate Change Impacts**
 Climate change operates as a threat multiplier, intensifying the effects of other human impacts while creating entirely new challenges that ecosystems have never faced in their evolutionary history.
 
@@ -393,6 +396,8 @@ Understanding these interconnections reveals why addressing individual environme
 This framework also highlights the urgent need for transformative changes in how human societies operate. Incremental improvements in efficiency or pollution control will not be sufficient to bring human impacts within planetary boundaries. Instead, we need fundamental changes in energy systems, agricultural practices, urban design, and economic structures that reduce human pressures on Earth systems while maintaining human wellbeing.
 
 The planetary boundaries framework ultimately serves as both a warning and a guide. It warns us that current trajectories are unsustainable and could lead to irreversible changes in Earth system functioning. But it also provides guidance for the types of changes needed to create a safe operating space for human civilization within Earth's environmental limits.
+
+<PlanetaryBoundariesWheel client:load />
 
 ## 1.6 Conservation Success Stories and Emerging Solutions
 
@@ -514,6 +519,9 @@ Community engagement and local ownership prove crucial for long-term conservatio
 Finally, successful conservation programs often address multiple goals simultaneously rather than focusing narrowly on single objectives. Programs that provide economic benefits, improve human welfare, and achieve conservation goals simultaneously tend to attract broader support and prove more resilient to changing political and economic conditions.
 
 Understanding these success principles provides a foundation for designing conservation programs that can address the planetary-scale challenges we examined earlier in this chapter. While the threats to global ecosystem integrity are unprecedented in their scale and urgency, these success stories demonstrate that human societies possess the knowledge and capabilities needed to restore Earth's natural systems when we choose to apply them systematically and at sufficient scale.
+
+<ConservationTimelineSlider client:load />
+
 
 ## Test Your Knowledge
 
