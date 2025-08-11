@@ -5,49 +5,46 @@ title: "Chapter 1 Quiz"
 import Quiz from '@/components/Quiz.jsx';
 
 export const quizData = {
-    title: "Global Ecosystem Principles - Comprehensive Assessment",
+    title: "Global Ecosystem Principles Quiz",
     questions: [
         {
             question: "Which of the following is NOT one of the five realms in the IUCN Global Ecosystem Typology?",
             options: [
                 "Terrestrial",
-                "Marine", 
+                "Marine",
                 "Arboreal",
                 "Subterranean"
             ],
             correctAnswerIndex: 2,
             category: "IUCN Typology",
-            difficulty: "Basic",
-            explanation: "The five realms in the IUCN Global Ecosystem Typology are: Terrestrial, Freshwater, Marine, Subterranean, and Atmospheric. Arboreal refers to tree-dwelling organisms but is not a separate realm classification.",
-            reference: "Keith et al. (2022) - IUCN Global Ecosystem Typology 2.0"
+            explanation: "The five realms are Terrestrial, Freshwater, Marine, Subterranean, and Atmospheric. Arboreal refers to tree-dwelling organisms but is not a separate realm.",
+            reference: "Keith et al. 2022"
         },
         {
-            question: "A region's evolutionary and biogeographic history primarily determines its...",
+            question: "A regions evolutionary and biogeographic history primarily determines its what?",
             options: [
                 "Biotic Filter",
                 "Regional Species Pool",
-                "Environmental Filter", 
+                "Environmental Filter",
                 "Ecosystem Function"
             ],
             correctAnswerIndex: 1,
             category: "Ecosystem Assembly",
-            difficulty: "Intermediate",
-            explanation: "The regional species pool consists of all species that could potentially colonize a habitat based on evolutionary history and biogeographic processes. This pool is then filtered by environmental and biotic factors.",
-            reference: "Vellend (2016) - The Theory of Ecological Communities"
+            explanation: "The regional species pool consists of all species that could potentially colonize a habitat based on evolutionary history and biogeographic processes.",
+            reference: "Vellend 2016"
         },
         {
-            question: "If primary productivity is 10,000 kcal/m²/year, approximately how much energy is available to tertiary consumers, assuming 10% transfer efficiency?",
+            question: "If primary productivity is 10,000 kcal per square meter per year, how much energy is available to tertiary consumers with 10% transfer efficiency?",
             options: [
-                "1,000 kcal/m²/year",
-                "100 kcal/m²/year", 
-                "10 kcal/m²/year",
-                "1 kcal/m²/year"
+                "1,000 kcal per square meter per year",
+                "100 kcal per square meter per year",
+                "10 kcal per square meter per year",
+                "1 kcal per square meter per year"
             ],
             correctAnswerIndex: 2,
             category: "Energy Flow",
-            difficulty: "Intermediate", 
-            explanation: "Energy transfer follows the 10% rule: Primary producers (10,000) to Primary consumers (1,000) to Secondary consumers (100) to Tertiary consumers (10 kcal/m²/year). Each trophic level receives approximately 10% of the energy from the level below.",
-            reference: "Lindeman (1942) - The trophic-dynamic aspect of ecology"
+            explanation: "Energy transfer follows the 10% rule. Primary producers to primary consumers to secondary consumers to tertiary consumers, losing 90% at each step.",
+            reference: "Lindeman 1942"
         },
         {
             question: "A forest providing timber is an example of which type of ecosystem service?",
@@ -59,12 +56,11 @@ export const quizData = {
             ],
             correctAnswerIndex: 3,
             category: "Ecosystem Services",
-            difficulty: "Basic",
-            explanation: "Provisioning services are tangible products obtained from ecosystems, including food, fresh water, timber, fiber, and genetic resources. Timber from forests is a direct material benefit.",
-            reference: "Millennium Ecosystem Assessment (2005)"
+            explanation: "Provisioning services are tangible products obtained from ecosystems including food, fresh water, timber, and fiber.",
+            reference: "Millennium Ecosystem Assessment 2005"
         },
         {
-            question: "Which of these planetary boundaries has been identified as already exceeded according to recent assessments?",
+            question: "Which planetary boundary has been identified as already exceeded?",
             options: [
                 "Freshwater use",
                 "Ocean acidification",
@@ -73,51 +69,47 @@ export const quizData = {
             ],
             correctAnswerIndex: 2,
             category: "Global Threats",
-            difficulty: "Intermediate",
-            explanation: "Biodiversity loss (measured as extinction rate) has exceeded safe planetary boundaries by 10-100 times the background rate. While other boundaries are stressed, biodiversity loss is in the high risk zone.",
-            reference: "Rockstrom et al. (2009) - Planetary boundaries framework"
+            explanation: "Biodiversity loss has exceeded safe planetary boundaries by 10-100 times the background rate.",
+            reference: "Rockstrom et al. 2009"
         },
         {
-            question: "According to the ecosystem assembly theory, which filter acts FIRST in determining community composition?",
+            question: "According to ecosystem assembly theory, which filter acts FIRST in determining community composition?",
             options: [
-                "Biotic interactions (competition, predation)",
-                "Environmental filters (climate, soil)",
+                "Biotic interactions like competition and predation",
+                "Environmental filters like climate and soil",
                 "Regional species pool availability",
                 "Human disturbance patterns"
             ],
             correctAnswerIndex: 2,
             category: "Ecosystem Assembly",
-            difficulty: "Advanced",
-            explanation: "Ecosystem assembly follows a hierarchical filtering process: First, the regional species pool determines what species are available through evolutionary and biogeographic history. Then environmental filters select species with appropriate tolerances, followed by biotic filters.",
-            reference: "HilleRisLambers et al. (2012) - Rethinking community assembly"
+            explanation: "Ecosystem assembly follows a hierarchical filtering process starting with the regional species pool, then environmental filters, then biotic filters.",
+            reference: "HilleRisLambers et al. 2012"
         },
         {
-            question: "What percentage of global economic activity (GDP) is estimated to depend directly on nature and ecosystem services?",
+            question: "What percentage of global economic activity depends directly on nature and ecosystem services?",
             options: [
                 "Approximately 25%",
-                "Approximately 40%", 
+                "Approximately 40%",
                 "More than 50%",
                 "Less than 20%"
             ],
             correctAnswerIndex: 2,
             category: "Economic Valuation",
-            difficulty: "Basic",
-            explanation: "Recent IPBES assessments estimate that 58 trillion dollars of global economic activity (more than half of global GDP) depends directly on nature and ecosystem services, highlighting the critical economic importance of biodiversity conservation.",
-            reference: "IPBES (2024) Global Assessment Report"
+            explanation: "Recent assessments estimate that more than half of global GDP depends directly on nature and ecosystem services.",
+            reference: "IPBES 2024"
         },
         {
             question: "Mediterranean-climate ecosystems are characterized by which precipitation pattern?",
             options: [
                 "Uniform rainfall throughout the year",
                 "Wet summers and dry winters",
-                "Wet winters and dry summers", 
-                "Two distinct wet seasons separated by dry periods"
+                "Wet winters and dry summers",
+                "Two distinct wet seasons"
             ],
             correctAnswerIndex: 2,
             category: "Biome Characteristics",
-            difficulty: "Basic",
-            explanation: "Mediterranean climates are defined by wet, mild winters and hot, dry summers. This seasonal precipitation pattern creates unique evolutionary pressures leading to distinctive adaptations like sclerophylly and fire tolerance.",
-            reference: "Blondel et al. (2010) - The Mediterranean Region"
+            explanation: "Mediterranean climates have wet mild winters and hot dry summers, creating unique evolutionary pressures.",
+            reference: "Blondel et al. 2010"
         },
         {
             question: "Which statement best describes the relationship between biodiversity and ecosystem stability?",
@@ -128,13 +120,12 @@ export const quizData = {
                 "Lower biodiversity increases ecosystem efficiency and stability"
             ],
             correctAnswerIndex: 2,
-            category: "Biodiversity-Function",
-            difficulty: "Intermediate",
-            explanation: "The insurance hypothesis suggests that higher biodiversity generally increases ecosystem resilience and stability by providing functional redundancy and complementarity. However, the relationship can be complex and context-dependent.",
-            reference: "Tilman et al. (2014) - Biodiversity and ecosystem functioning"
+            category: "Biodiversity Function",
+            explanation: "The insurance hypothesis suggests that higher biodiversity generally increases ecosystem resilience and stability through functional redundancy.",
+            reference: "Tilman et al. 2014"
         },
         {
-            question: "What is the primary mechanism by which nitrogen becomes available to most plants in terrestrial ecosystems?",
+            question: "What is the primary mechanism by which nitrogen becomes available to most plants?",
             options: [
                 "Direct uptake of atmospheric nitrogen gas",
                 "Biological nitrogen fixation by bacteria",
@@ -143,15 +134,16 @@ export const quizData = {
             ],
             correctAnswerIndex: 1,
             category: "Biogeochemical Cycles",
-            difficulty: "Intermediate",
-            explanation: "Although nitrogen gas makes up 78% of the atmosphere, most plants cannot use it directly. Biological nitrogen fixation by specialized bacteria converts atmospheric nitrogen into ammonia, making it available to plants.",
-            reference: "Chapin et al. (2011) - Principles of Terrestrial Ecosystem Ecology"
+            explanation: "Most plants cannot use atmospheric nitrogen directly. Specialized bacteria convert atmospheric nitrogen into ammonia making it available to plants.",
+            reference: "Chapin et al. 2011"
         }
     ]
 };
 
+export const formspreeUrl = 'https://formspree.io/f/movlyjen';
+
 # Chapter 1 Quiz: Global Ecosystem Principles
 
-Test your comprehensive understanding of the concepts covered in Chapter 1. This enhanced quiz covers ecosystem science fundamentals, the IUCN Global Ecosystem Typology, ecosystem services, and global biodiversity patterns.
+Test your understanding of the concepts covered in Chapter 1. This quiz covers ecosystem science fundamentals, the IUCN Global Ecosystem Typology, ecosystem services, and global biodiversity patterns.
 
-<Quiz client:load quizData={quizData} />
+<Quiz client:load quizData={quizData} formspreeUrl={formspreeUrl} />
