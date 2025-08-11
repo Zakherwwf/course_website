@@ -4,7 +4,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithPopup,
-  GoogleAuthProvider
+  GoogleAuthProvider,
+  updateProfile, // <-- Import updateProfile
 } from 'firebase/auth';
 
 // Firebase configuration
@@ -18,24 +19,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let app, auth, googleProvider;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-try {
-  app = initializeApp(firebaseConfig);
-  auth = getAuth(app);
-  googleProvider = new GoogleAuthProvider();
-
-  // Configure Google provider for better UX
-  googleProvider.addScope('email');
-  googleProvider.addScope('profile');
-  googleProvider.setCustomParameters({
-    prompt: 'select_account'
-  });
-
-  console.log('Firebase initialized successfully');
-} catch (error) {
-  console.error('Firebase initialization error:', error);
-}
+// Auth providers
+const googleProvider = new GoogleAuthProvider();
 
 export default function AnimatedRegistrationCard() {
   const [email, setEmail] = useState('');
@@ -53,7 +41,16 @@ export default function AnimatedRegistrationCard() {
     setError('');
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      // Create the user
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+      // **IMPROVEMENT**: Update the user's profile with their name
+      if (userCredential.user) {
+        await updateProfile(userCredential.user, {
+          displayName: name,
+        });
+      }
+
       setIsLoading(false);
       setIsSubmitted(true);
       setTimeout(() => {
@@ -66,23 +63,20 @@ export default function AnimatedRegistrationCard() {
   };
 
   const handleGoogleAuth = async () => {
-    console.log('Google button clicked!'); // Debug log
     setSocialLoading('Google');
     setError('');
 
     try {
-      console.log('Attempting Google sign-in...'); // Debug log
-      const result = await signInWithPopup(auth, googleProvider);
-      console.log('Google sign-in successful:', result.user); // Debug log
+      await signInWithPopup(auth, googleProvider);
       setSocialLoading('');
       setIsSubmitted(true);
       setTimeout(() => {
         window.location.href = '/course_website/chapter1/';
       }, 2500);
     } catch (error) {
-      console.error('Google sign-in error:', error); // Debug log
       setSocialLoading('');
-      setError(`Google sign-in failed: ${error.message}`);
+      // Providing a more user-friendly error message for Google sign-in
+      setError('Google sign-in failed. Please check your connection or browser settings (e.g., pop-up blockers) and try again.');
     }
   };
 
@@ -119,7 +113,9 @@ export default function AnimatedRegistrationCard() {
               <div className="social-auth">
                 <button
                   onClick={handleGoogleAuth}
-                  disabled={socialLoading}
+                  // **FIXED HERE**: Use !! to convert the string to a boolean.
+                  // `!!''` is false (enabled), `!!'Google'` is true (disabled).
+                  disabled={!!socialLoading}
                   className="social-button google-button"
                 >
                   {socialLoading === 'Google' ? (
@@ -368,18 +364,11 @@ export default function AnimatedRegistrationCard() {
         .google-button {
           border-color: #4285f4;
           color: #4285f4;
-          pointer-events: auto; /* Ensure button is clickable */
-          user-select: none; /* Prevent text selection */
         }
 
         .google-button:hover:not(:disabled) {
           background: #f8fbff;
           border-color: #1a73e8;
-        }
-
-        .google-button:active {
-          transform: translateY(0);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .divider {
@@ -396,6 +385,7 @@ export default function AnimatedRegistrationCard() {
           right: 0;
           height: 1px;
           background: var(--color-border, #E8E8E8);
+          z-index: -1;
         }
 
         .divider span {
