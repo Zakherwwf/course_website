@@ -1,5 +1,6 @@
 ---
 import Search from './Search.jsx';
+import CompactTextToSpeech from './CompactTextToSpeech.jsx';
 
 // Updated navigation data with Chapter 6
 const navigation = [
@@ -52,6 +53,11 @@ const currentPath = Astro.url.pathname;
         <!-- Search Section -->
         <div class="search-section">
             <Search client:load />
+        </div>
+
+        <!-- Text-to-Speech Section -->
+        <div class="tts-section">
+            <CompactTextToSpeech client:load contentSelector=".prose" />
         </div>
 
         <!-- Navigation -->
@@ -240,6 +246,115 @@ const currentPath = Astro.url.pathname;
         pointer-events: none;
     }
 
+    /* TTS Section Styling */
+    .tts-section {
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--color-border);
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        background: var(--color-bg);
+    }
+
+    .sidebar.collapsed .tts-section {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Override CompactTextToSpeech styles for better sidebar integration */
+    .tts-section :global(.compact-tts) {
+        background: linear-gradient(135deg, var(--color-bg-alt) 0%, #f1f5f9 100%) !important;
+        border: 1px solid var(--color-border) !important;
+        border-radius: 8px !important;
+        padding: 12px !important;
+        margin: 0 !important;
+        font-size: 0.75rem !important;
+    }
+
+    .tts-section :global(.compact-tts .tts-header) {
+        margin-bottom: 10px !important;
+        padding-bottom: 8px !important;
+    }
+
+    .tts-section :global(.compact-tts .tts-header h4) {
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        color: var(--color-primary) !important;
+    }
+
+    .tts-section :global(.compact-tts .duration) {
+        font-size: 0.65rem !important;
+        padding: 2px 6px !important;
+        background: var(--color-bg) !important;
+        border: 1px solid var(--color-border) !important;
+    }
+
+    .tts-section :global(.compact-tts .main-controls) {
+        gap: 8px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .tts-section :global(.compact-tts .btn-primary) {
+        padding: 8px 12px !important;
+        font-size: 0.7rem !important;
+        border-radius: 6px !important;
+    }
+
+    .tts-section :global(.compact-tts .btn-small) {
+        padding: 4px 8px !important;
+        font-size: 0.65rem !important;
+        min-width: 28px !important;
+        border-radius: 4px !important;
+    }
+
+    .tts-section :global(.compact-tts .speed-control) {
+        margin-bottom: 8px !important;
+    }
+
+    .tts-section :global(.compact-tts .speed-control label) {
+        font-size: 0.7rem !important;
+        gap: 6px !important;
+    }
+
+    .tts-section :global(.compact-tts .speed-select) {
+        padding: 3px 6px !important;
+        font-size: 0.65rem !important;
+        border-radius: 4px !important;
+    }
+
+    .tts-section :global(.compact-tts .settings-btn) {
+        padding: 4px 8px !important;
+        font-size: 0.65rem !important;
+        border-radius: 4px !important;
+    }
+
+    .tts-section :global(.compact-tts .voice-settings) {
+        padding-top: 8px !important;
+    }
+
+    .tts-section :global(.compact-tts .voice-settings label) {
+        font-size: 0.65rem !important;
+        gap: 4px !important;
+    }
+
+    .tts-section :global(.compact-tts .voice-select) {
+        padding: 4px !important;
+        font-size: 0.65rem !important;
+    }
+
+    /* Loading state for TTS */
+    .tts-section :global(.compact-tts.loading) {
+        padding: 12px !important;
+    }
+
+    .tts-section :global(.compact-tts.loading .loading-content) {
+        font-size: 0.7rem !important;
+    }
+
+    .tts-section :global(.compact-tts.loading .spinner) {
+        width: 12px !important;
+        height: 12px !important;
+    }
+
     .navigation {
         flex: 1;
         overflow-y: auto;
@@ -418,6 +533,7 @@ const currentPath = Astro.url.pathname;
         .sidebar,
         .logo-text,
         .search-section,
+        .tts-section,
         .section-header,
         .link-text,
         .completion-dot,

@@ -2,7 +2,6 @@
 import Header from '../components/Header.astro';
 import LeftSidebar from '../components/LeftSidebar.astro';
 import RightSidebar from '../components/RightSidebar.jsx';
-import AuthGuard from '../components/AuthGuard.jsx';
 import '../styles/global.scss';
 
 const { frontmatter } = Astro.props;
@@ -25,11 +24,9 @@ const { frontmatter } = Astro.props;
         <div class="main-grid">
             <LeftSidebar />
             <main class="main-content">
-                <AuthGuard client:load>
-                    <div class="prose">
-                        <slot />
-                    </div>
-                </AuthGuard>
+                <div class="prose" id="main-content">
+                    <slot />
+                </div>
             </main>
             <RightSidebar headings={frontmatter.headings} client:load />
         </div>
